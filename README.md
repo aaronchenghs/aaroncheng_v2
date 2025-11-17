@@ -1,11 +1,11 @@
 # aaroncheng_v2
 
-Second iteration of my personal portfolio site.  
-Built with modern React, motion-heavy UI, and a small 3D layer for a clean, high-contrast one-page experience.
+Aaron Cheng's Personal Site.  
+Built with modern React, motion-heavy UI, and a small 3D layer.
 
 ---
 
-## Tech Stack
+## Stack
 
 - **Framework:** React + TypeScript
 - **Build Tool:** Vite
@@ -32,7 +32,7 @@ Built with modern React, motion-heavy UI, and a small 3D layer for a clean, high
 ## Requirements
 
 - **Node.js:** `>=20` (recommended LTS 20 or 22)
-- **Package manager:** `npm` (or `pnpm`/`yarn` if you adjust the scripts)
+- **Package manager:** `npm`
 
 ---
 
@@ -41,7 +41,7 @@ Built with modern React, motion-heavy UI, and a small 3D layer for a clean, high
 Clone the repo and install dependencies:
 
 ```bash
-git clone <repo-url> aaroncheng_v2
+git clone [<repo-url>](https://github.com/aaronchenghs/aaroncheng_v2.git) aaroncheng_v2
 cd aaroncheng_v2
 
 npm install
