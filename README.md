@@ -41,7 +41,7 @@ Built with modern React, motion-heavy UI, and a small 3D layer.
 Clone the repo and install dependencies:
 
 ```bash
-git clone [<repo-url>](https://github.com/aaronchenghs/aaroncheng_v2.git) aaroncheng_v2
+git clone https://github.com/aaronchenghs/aaroncheng_v2.git aaroncheng_v2
 cd aaroncheng_v2
 
 npm install
