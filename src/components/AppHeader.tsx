@@ -15,9 +15,14 @@ export function AppHeader() {
   const lenis = useLenis();
   const [kaomojiIndex, setKaomojiIndex] = useState(0);
 
+  const scrollToSection = (selector: string) => (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    lenis?.scrollTo(selector, { duration: 1 });
+  };
+
   const handleKaomojiIncrement = () => {
-    setKaomojiIndex((prevIndex) => (prevIndex + 1) % HEADER_KAOMOJIS.length);
-    lenis?.scrollTo(0, { duration: 1 });
+    setKaomojiIndex((prev) => (prev + 1) % HEADER_KAOMOJIS.length);
+    lenis?.scrollTo(0, { duration: 1.5 });
   };
 
   return (
@@ -28,13 +33,17 @@ export function AppHeader() {
         </button>
 
         <div className={styles.navContainer}>
-          <a href="#portfolio" className={styles.navLink}>
+          <a href="#portfolio" className={styles.navLink} onClick={scrollToSection('#portfolio')}>
             Portfolio
           </a>
-          <a href="#contact" className={styles.navLink}>
+          <a href="#contact" className={styles.navLink} onClick={scrollToSection('#contact')}>
             Contact
           </a>
-          <a href="#message-board" className={styles.navLink}>
+          <a
+            href="#message-board"
+            className={styles.navLink}
+            onClick={scrollToSection('#message-board')}
+          >
             Message Board
           </a>
         </div>
