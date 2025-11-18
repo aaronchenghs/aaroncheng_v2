@@ -1,19 +1,41 @@
+import { useState } from 'react';
+import { useLenis } from 'lenis/react';
+import { HEADER_KAOMOJIS } from '../assets/emotes';
+
+const styles = {
+  root: 'sticky top-0 z-30 border-b border-white/5 bg-neutral-950/70 backdrop-blur',
+  nav: 'mx-auto flex max-w-8xl items-center justify-between px-4 py-3 select-none',
+  brandButton:
+    'text-sm font-semibold tracking-[0.25em] uppercase text-neutral-400 hover:text-white cursor-pointer select-none',
+  navContainer: 'flex gap-4',
+  navLink: 'text-xs font-medium text-neutral-300 transition-colors hover:text-white',
+} as const;
+
 export function AppHeader() {
+  const lenis = useLenis();
+  const [kaomojiIndex, setKaomojiIndex] = useState(0);
+
+  const handleKaomojiIncrement = () => {
+    setKaomojiIndex((prevIndex) => (prevIndex + 1) % HEADER_KAOMOJIS.length);
+    lenis?.scrollTo(0, { duration: 1 });
+  };
+
   return (
-    <header className="sticky top-0 z-30 border-b border-white/5 bg-neutral-950/70 backdrop-blur">
-      <nav className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
-        <span className="text-sm font-semibold tracking-[0.25em] uppercase text-neutral-400">
-          Aaron Cheng
-        </span>
-        <div className="flex gap-4 text-xs font-medium text-neutral-300">
-          <a href="#about" className="hover:text-white">
-            About
+    <header className={styles.root}>
+      <nav className={styles.nav}>
+        <button type="button" onClick={handleKaomojiIncrement} className={styles.brandButton}>
+          Aaron Cheng {HEADER_KAOMOJIS[kaomojiIndex]}
+        </button>
+
+        <div className={styles.navContainer}>
+          <a href="#portfolio" className={styles.navLink}>
+            Portfolio
           </a>
-          <a href="#projects" className="hover:text-white">
-            Projects
-          </a>
-          <a href="#contact" className="hover:text-white">
+          <a href="#contact" className={styles.navLink}>
             Contact
+          </a>
+          <a href="#message-board" className={styles.navLink}>
+            Message Board
           </a>
         </div>
       </nav>

@@ -61,6 +61,15 @@ export default [
           groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object'],
         },
       ],
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+          ignoreRestSiblings: true,
+        },
+      ],
       'tailwindcss/classnames-order': 'warn',
       'prettier/prettier': 'error',
     },
