@@ -64,7 +64,7 @@ export function ContactSection() {
           <li key={method.label} className={styles.item}>
             <div className={styles.title}>{method.label}</div>
             <p className={styles.desc}>{method.description}</p>
-            <a href={method.detail.href} className={styles.link}>
+            <a href={method.detail.href} className={styles.link} target="_blank" rel="noreferrer">
               {method.detail.text}
             </a>
           </li>

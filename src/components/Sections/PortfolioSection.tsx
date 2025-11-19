@@ -51,12 +51,12 @@ const projects = [
 ];
 
 const styles = {
-  sectionDivider: 'space-y-8',
-  certsWrapper: 'flex flex-wrap gap-6',
+  sectionDivider: 'flex flex-col gap-8 items-center justify-center',
+  certsWrapper: 'flex flex-wrap justify-center gap-6 w-full max-w-4xl',
   certDivider: 'flex flex-col items-center',
   certImg: 'h-20 w-20 object-contain',
   certText: 'mt-2 text-xs text-neutral-300',
-  grid: 'grid gap-6 md:grid-cols-2',
+  grid: 'grid gap-6 md:grid-cols-2 w-full max-w-4xl',
   card:
     'group relative overflow-hidden rounded-2xl border border-white/5 bg-neutral-900/40 p-5 transition ' +
     'hover:border-white/20 hover:bg-neutral-900/80',
@@ -72,7 +72,7 @@ export function PortfolioSection() {
     <Section
       id="portfolio"
       label="Portfolio"
-      title="Selected Projects & Certifications"
+      title="Projects & Certifications"
       kicker="A sampling of what I’ve built, learned and shipped"
     >
       <div className={styles.sectionDivider}>

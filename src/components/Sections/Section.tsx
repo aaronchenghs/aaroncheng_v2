@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 const styles = {
   root: 'scroll-mt-24 py-16 border-b border-white/5 last:border-b-0',
   inner: 'space-y-8',
-  header: 'space-y-3',
+  header: 'flex flex-col items-center justify-center column space-y-3',
   label:
     'inline-flex items-center rounded-full border border-white/10 bg-black/40 px-3 py-1 ' +
     'text-[0.65rem] font-medium uppercase tracking-[0.2em] text-neutral-300/80 backdrop-blur',
