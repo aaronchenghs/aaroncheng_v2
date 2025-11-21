@@ -1,53 +1,10 @@
+import { PORTFOLIO_PROJECTS } from '../../assets/projects';
+import { techLogos, type TechKey } from '../../assets/techLogos';
 import { Section } from './Section';
 
 const certifications = [
   { src: '/certs/aws-cloud-practitioner.png', alt: 'AWS Cloud Practitioner' },
   { src: '/certs/aws-developer-associate.png', alt: 'AWS Developer Associate' },
-];
-
-const projects = [
-  {
-    name: 'Elapsed',
-    stack: 'React · TypeScript · .NET',
-    description: 'A swim‑training timer app with laps, splits and live feedback.',
-    image: '/projects/elapsed.png',
-  },
-  {
-    name: 'Geaux Enroll',
-    stack: 'React · Node · PostgreSQL',
-    description: 'Simplifies course enrollment for students with rich search and notifications.',
-    image: '/projects/geaux-enroll.png',
-  },
-  {
-    name: 'Youtube Sentiment Analyzer',
-    stack: 'Python · Pandas · React',
-    description: 'Scrapes comments and visualizes sentiment over time for any video.',
-    image: '/projects/youtube-sentiment.png',
-  },
-  {
-    name: 'Palate Passport',
-    stack: 'React Native · GraphQL',
-    description: 'A food‑travel log that lets you mark and rate dishes across the world.',
-    image: '/projects/palate-passport.png',
-  },
-  {
-    name: 'ARC: This Website!',
-    stack: 'React · Tailwind · Motion',
-    description: 'The very site you’re browsing—rebuilt to be fast, accessible and fun.',
-    image: '/projects/arc.png',
-  },
-  {
-    name: 'Exodus',
-    stack: 'Unity · C#',
-    description: 'A small 2D exploration game with puzzles and atmospheric music.',
-    image: '/projects/exodus.png',
-  },
-  {
-    name: 'Akon',
-    stack: 'Discord.js · Firebase',
-    description: 'A Discord bot for sharing track recommendations and chat games.',
-    image: '/projects/akon.png',
-  },
 ];
 
 const styles = {
@@ -63,8 +20,11 @@ const styles = {
   imgWrapper: 'h-32 mb-3 overflow-hidden rounded-lg bg-neutral-800',
   img: 'h-full w-full object-cover transition-transform duration-300 group-hover:scale-105',
   name: 'mb-1 text-sm font-semibold text-white',
-  stack: 'mb-2 text-[0.7rem] uppercase tracking-wide text-neutral-400',
-  desc: 'text-xs text-neutral-300',
+  desc: 'p-1 text-xs text-neutral-300',
+  stackRow: 'w-full mt-2 flex flex-wrap justify-center items-center gap-2',
+  stackLabel: 'text-[0.7rem] font-semibold uppercase tracking-wide text-neutral-400',
+  stackIcons: 'flex flex-wrap items-center gap-1.5',
+  stackIcon: 'h-4 w-4 object-contain',
 } as const;
 
 export function PortfolioSection() {
@@ -86,18 +46,54 @@ export function PortfolioSection() {
         </div>
 
         <div className={styles.grid}>
-          {projects.map((project) => (
-            <article key={project.name} className={styles.card}>
-              <div className={styles.imgWrapper}>
-                <img src={project.image} alt={project.name} className={styles.img} />
-              </div>
-              <h3 className={styles.name}>{project.name}</h3>
-              <p className={styles.stack}>{project.stack}</p>
-              <p className={styles.desc}>{project.description}</p>
-            </article>
+          {PORTFOLIO_PROJECTS.map((project) => (
+            <Project
+              key={project.name}
+              name={project.name}
+              href={project.href}
+              stack={project.stack}
+              description={project.description}
+              image={project.image}
+              techs={project.techs}
+            />
           ))}
         </div>
       </div>
     </Section>
+  );
+}
+
+type ProjectProps = {
+  name: string;
+  href: string;
+  stack: string;
+  description: string;
+  image: string;
+  techs: TechKey[];
+};
+
+function Project({ name, description, image, techs }: ProjectProps) {
+  return (
+    <article className={styles.card}>
+      <div className={styles.imgWrapper}>
+        <img src={image} alt={name} className={styles.img} />
+      </div>
+      <h3 className={styles.name}>{name}</h3>
+
+      <div className={styles.stackRow}>
+        <div className={styles.stackIcons}>
+          {techs.map((key) => (
+            <img
+              key={`${name}-${key}`}
+              src={techLogos[key]}
+              alt={key}
+              className={styles.stackIcon}
+            />
+          ))}
+        </div>
+      </div>
+
+      <p className={styles.desc}>{description}</p>
+    </article>
   );
 }
