@@ -1,5 +1,3 @@
-export const Contact_HeaderText = 'Connect With Me 🔗';
-
 export const CONTACT_INFOS = [
   {
     name: 'Email',
