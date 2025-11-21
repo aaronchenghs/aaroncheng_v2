@@ -120,7 +120,7 @@ export function MessageBoardSection() {
                 value={body}
                 onChange={(e) => setBody(e.target.value)}
                 className={styles.textarea}
-                placeholder="Say something nice, weird, or interesting."
+                placeholder="Let me know something!"
               />
             </label>
 

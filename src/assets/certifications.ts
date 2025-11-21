@@ -16,4 +16,4 @@ export const PORTFOLIO_CERTIFICATIONS = [
   },
 ] as const;
 
-export type CertKey = (typeof PORTFOLIO_CERTIFICATIONS)[number]['alt'];
+export type Cert = (typeof PORTFOLIO_CERTIFICATIONS)[number];

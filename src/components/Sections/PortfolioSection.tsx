@@ -1,4 +1,4 @@
-import { PORTFOLIO_CERTIFICATIONS } from '../../assets/certifications';
+import { PORTFOLIO_CERTIFICATIONS, type Cert } from '../../assets/certifications';
 import { PORTFOLIO_PROJECTS } from '../../assets/projects';
 import { techLogos, type TechKey } from '../../assets/techLogos';
 import { Section } from './Section';
@@ -32,21 +32,12 @@ export function PortfolioSection() {
       id="portfolio"
       label="Portfolio"
       title="Projects & Certifications"
-      kicker="A sampling of what I’ve built, learned and shipped"
+      kicker="A sampling of what I’ve built"
     >
       <div className={styles.sectionDivider}>
         <div className={styles.certsWrapper}>
-          {PORTFOLIO_CERTIFICATIONS.map((cert) => (
-            <a
-              key={cert.alt}
-              href={cert.url}
-              target="_blank"
-              rel="noreferrer"
-              className={styles.certCard}
-            >
-              <img src={cert.src} alt={cert.alt} className={styles.certImg} />
-              <span className={styles.certText}>{cert.alt}</span>
-            </a>
+          {PORTFOLIO_CERTIFICATIONS.map((cert: Cert) => (
+            <Certification key={cert.alt} {...cert} />
           ))}
         </div>
 
@@ -65,6 +56,16 @@ export function PortfolioSection() {
         </div>
       </div>
     </Section>
+  );
+}
+
+function Certification({ alt, url, src, issued }: Cert) {
+  return (
+    <a key={alt} href={url} target="_blank" rel="noreferrer" className={styles.certCard}>
+      <img src={src} alt={alt} className={styles.certImg} />
+      <span className={styles.certText}>{alt}</span>
+      <span className={styles.certText}>Issued {issued}</span>
+    </a>
   );
 }
 
