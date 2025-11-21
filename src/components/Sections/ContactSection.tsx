@@ -1,54 +1,19 @@
+import { CONTACT_INFOS } from '../../assets/contacts';
 import { Section } from './Section';
 
-const contactMethods = [
-  {
-    label: 'Email',
-    description: 'I’m always checking my inbox. Expect a reply within a day.',
-    detail: {
-      text: 'aaronchengj@gmail.com',
-      href: 'mailto:aaronchengj@gmail.com',
-    },
-  },
-  {
-    label: 'Phone',
-    description: 'For quick replies, shoot me a text and I’ll respond within an hour.',
-    detail: {
-      text: '+1 (225) 964‑4030',
-      href: 'tel:+12259644030',
-    },
-  },
-  {
-    label: 'WhatsApp',
-    description: 'You can also reach me on WahtsApp!',
-    detail: {
-      text: '+1 (225) 964‑4030',
-      href: 'https://wa.me/12259644030',
-    },
-  },
-  {
-    label: 'LinkedIn',
-    description: 'Connect professionally or just say hi over on LinkedIn.',
-    detail: {
-      text: 'Aaron (Raphael) Cheng',
-      href: 'https://www.linkedin.com/in/your-handle',
-    },
-  },
-  {
-    label: 'GitHub',
-    description: 'See what I’m building.',
-    detail: {
-      text: 'aaronchenghs',
-      href: 'https://github.com/aaronchenghs',
-    },
-  },
-];
-
 const styles = {
-  list: 'space-y-5',
-  item: 'rounded-2xl border border-white/10 bg-neutral-900/70 p-4',
+  list: 'space-y-5 w-full max-w-2xl md:max-w-3xl mx-auto',
+  item:
+    'relative flex items-center gap-4 md:gap-6 justify-between md:justify-center ' +
+    'rounded-2xl border border-white/10 bg-neutral-900/70 p-5',
+  iconWrapper:
+    'flex h-10 w-10 items-center justify-center rounded-full bg-neutral-800/80 flex-shrink-0 ' +
+    'md:absolute md:left-5 md:top-1/2 md:-translate-y-1/2',
+  iconImg: 'h-6 w-6 object-contain',
+  content: 'flex-1 text-left md:text-center md:px-14',
   title: 'text-sm font-semibold text-white',
   desc: 'mt-1 text-xs text-neutral-300',
-  link: 'mt-2 inline-block text-sm text-emerald-400 hover:underline',
+  link: 'mt-2 inline-block text-sm text-emerald-400 hover:underline break-all',
 } as const;
 
 export function ContactSection() {
@@ -60,13 +25,19 @@ export function ContactSection() {
       kicker="Questions, collaborations or just a friendly hello"
     >
       <ul className={styles.list}>
-        {contactMethods.map((method) => (
-          <li key={method.label} className={styles.item}>
-            <div className={styles.title}>{method.label}</div>
-            <p className={styles.desc}>{method.description}</p>
-            <a href={method.detail.href} className={styles.link} target="_blank" rel="noreferrer">
-              {method.detail.text}
-            </a>
+        {CONTACT_INFOS.map((method) => (
+          <li key={method.name} className={styles.item}>
+            <div className={styles.iconWrapper}>
+              <img src={method.path} alt={method.name} className={styles.iconImg} />
+            </div>
+
+            <div className={styles.content}>
+              <div className={styles.title}>{method.name}</div>
+              <p className={styles.desc}>{method.description}</p>
+              <a href={method.link} className={styles.link} target="_blank" rel="noreferrer">
+                {method.tag}
+              </a>
+            </div>
           </li>
         ))}
       </ul>
