@@ -77,12 +77,13 @@ type ProjectProps = {
   image: string;
   techs: TechKey[];
 };
-
 function Project({ name, href, description, image, techs }: ProjectProps) {
   return (
     <article className={styles.card}>
       <div className={styles.imgWrapper}>
-        <img src={image} alt={name} className={styles.img} />
+        <a href={href} target="_blank" rel="noreferrer">
+          <img src={image} alt={name} className={styles.img} />
+        </a>
       </div>
 
       <h3 className={styles.name}>
