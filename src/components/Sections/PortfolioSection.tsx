@@ -1,30 +1,29 @@
+import { PORTFOLIO_CERTIFICATIONS } from '../../assets/certifications';
 import { PORTFOLIO_PROJECTS } from '../../assets/projects';
 import { techLogos, type TechKey } from '../../assets/techLogos';
 import { Section } from './Section';
 
-const certifications = [
-  { src: '/certs/aws-cloud-practitioner.png', alt: 'AWS Cloud Practitioner' },
-  { src: '/certs/aws-developer-associate.png', alt: 'AWS Developer Associate' },
-];
-
 const styles = {
-  sectionDivider: 'flex flex-col gap-8 items-center justify-center',
+  sectionDivider: 'flex flex-col gap-10 items-center justify-center',
   certsWrapper: 'flex flex-wrap justify-center gap-6 w-full max-w-4xl',
-  certDivider: 'flex flex-col items-center',
-  certImg: 'h-20 w-20 object-contain',
-  certText: 'mt-2 text-xs text-neutral-300',
-  grid: 'grid gap-6 md:grid-cols-2 w-full max-w-4xl',
+  certCard:
+    'group flex flex-col items-center rounded-2xl border border-white/10 bg-neutral-900/40 p-4 ' +
+    'transition hover:border-emerald-400 hover:bg-neutral-900/80 cursor-pointer',
+  certImg: 'h-24 w-24 object-contain mb-2',
+  certText: 'mt-1 text-xs font-medium text-neutral-200',
+  grid: 'grid gap-7 md:grid-cols-2 w-full max-w-4xl',
   card:
-    'group relative overflow-hidden rounded-2xl border border-white/5 bg-neutral-900/40 p-5 transition ' +
-    'hover:border-white/20 hover:bg-neutral-900/80',
-  imgWrapper: 'h-32 mb-3 overflow-hidden rounded-lg bg-neutral-800',
+    'group relative overflow-hidden rounded-2xl border border-white/5 bg-neutral-900/40 p-6 transition ' +
+    'hover:border-emerald-400 hover:bg-neutral-900/80',
+  imgWrapper: 'h-40 mb-4 overflow-hidden rounded-lg bg-neutral-800',
   img: 'h-full w-full object-cover transition-transform duration-300 group-hover:scale-105',
-  name: 'mb-1 text-sm font-semibold text-white',
-  desc: 'p-1 text-xs text-neutral-300',
+  name: 'mb-1 text-sm md:text-base font-semibold text-white',
+  nameLink:
+    'inline-flex items-center text-sm md:text-base font-semibold text-white hover:text-emerald-400 transition-colors',
+  desc: 'pt-1 text-xs md:text-sm text-neutral-300',
   stackRow: 'w-full mt-2 flex flex-wrap justify-center items-center gap-2',
-  stackLabel: 'text-[0.7rem] font-semibold uppercase tracking-wide text-neutral-400',
   stackIcons: 'flex flex-wrap items-center gap-1.5',
-  stackIcon: 'h-4 w-4 object-contain',
+  stackIcon: 'h-4 w-4 md:h-5 md:w-5 object-contain',
 } as const;
 
 export function PortfolioSection() {
@@ -37,11 +36,17 @@ export function PortfolioSection() {
     >
       <div className={styles.sectionDivider}>
         <div className={styles.certsWrapper}>
-          {certifications.map((cert) => (
-            <div key={cert.alt} className={styles.certDivider}>
+          {PORTFOLIO_CERTIFICATIONS.map((cert) => (
+            <a
+              key={cert.alt}
+              href={cert.url}
+              target="_blank"
+              rel="noreferrer"
+              className={styles.certCard}
+            >
               <img src={cert.src} alt={cert.alt} className={styles.certImg} />
               <span className={styles.certText}>{cert.alt}</span>
-            </div>
+            </a>
           ))}
         </div>
 
@@ -72,13 +77,18 @@ type ProjectProps = {
   techs: TechKey[];
 };
 
-function Project({ name, description, image, techs }: ProjectProps) {
+function Project({ name, href, description, image, techs }: ProjectProps) {
   return (
     <article className={styles.card}>
       <div className={styles.imgWrapper}>
         <img src={image} alt={name} className={styles.img} />
       </div>
-      <h3 className={styles.name}>{name}</h3>
+
+      <h3 className={styles.name}>
+        <a href={href} target="_blank" rel="noreferrer" className={styles.nameLink}>
+          {name}
+        </a>
+      </h3>
 
       <div className={styles.stackRow}>
         <div className={styles.stackIcons}>
