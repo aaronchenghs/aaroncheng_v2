@@ -131,11 +131,13 @@ export function MessageBoardSection() {
         )}
 
         <div className={styles.listWrapper}>
-          {isLoading ? (
-            <p className="text-xs text-neutral-500">Loading messages…</p>
-          ) : messages.length === 0 ? (
-            <p className="text-xs text-neutral-500">No messages yet. Be the first.</p>
-          ) : (
+          {(isLoading || messages.length === 0) && (
+            <p className="text-xs text-neutral-500">
+              {isLoading ? 'Loading messages…' : 'No messages yet. Be the first.'}
+            </p>
+          )}
+
+          {!isLoading && messages.length > 0 && (
             <ul className={styles.list}>
               {messages.map((msg) => (
                 <li key={msg.id} className={styles.item}>
