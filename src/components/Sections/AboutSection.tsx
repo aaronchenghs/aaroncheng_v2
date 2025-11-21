@@ -16,7 +16,7 @@ export function AboutSection() {
     <Section
       id="about"
       label="About"
-      title="Who I Am"
+      title="Aaron Cheng"
       kicker="Software developer, LSU grad, builder of web and desktop tools"
     >
       <div className={styles.wrapper}>

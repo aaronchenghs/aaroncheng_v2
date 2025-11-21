@@ -1,8 +1,23 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Section } from './Section';
+import { onAuthStateChanged, type User } from 'firebase/auth';
+import {
+  auth,
+  createFeedbackDocument,
+  createUserDocumentFromAuth,
+  formatFeedbackDate,
+  getFeedbackStream,
+  signInWithGooglePopup,
+  type FeedbackDTO,
+} from '../../lib/firebase';
 
 const styles = {
-  form: 'space-y-4 max-w-xl',
+  container: 'flex flex-col items-center gap-8',
+  signInButton:
+    'inline-flex items-center justify-center rounded-full border border-white/15 ' +
+    'bg-neutral-900/80 px-4 py-2 text-xs font-semibold text-neutral-50 shadow-sm ' +
+    'transition hover:border-white/40 hover:bg-neutral-800',
+  form: 'w-full max-w-xl space-y-4',
   label: 'flex flex-col gap-1 text-xs font-medium text-neutral-300',
   input:
     'rounded-xl border border-white/10 bg-neutral-900/70 px-3 py-2 text-sm text-neutral-50 ' +
@@ -14,75 +29,127 @@ const styles = {
     'focus:ring-1 focus:ring-emerald-400',
   submit:
     'inline-flex items-center rounded-full bg-white px-4 py-2 text-xs font-semibold ' +
-    'text-neutral-900 shadow-lg shadow-white/20 transition hover:bg-neutral-100',
-  list: 'mt-8 space-y-3 text-sm text-neutral-200',
+    'text-neutral-900 shadow-lg shadow-white/20 transition hover:bg-neutral-100 ' +
+    'disabled:cursor-not-allowed disabled:opacity-60',
+
+  listWrapper: 'w-full max-w-3xl space-y-4',
+  list: 'mt-6 w-full space-y-3 text-sm text-neutral-200',
   item: 'rounded-2xl border border-white/5 bg-neutral-900/60 px-4 py-3 text-xs text-neutral-200',
-  author: 'mb-1 text-[0.7rem] font-semibold uppercase tracking-wide text-neutral-400',
+  meta:
+    'mb-1 flex items-center justify-between text-[0.7rem] uppercase ' +
+    'tracking-wide text-neutral-400',
+  name: 'font-semibold',
+  date: 'text-neutral-500',
 } as const;
 
-type Message = {
-  id: number;
-  name: string;
-  body: string;
-};
-
 export function MessageBoardSection() {
-  const [messages, setMessages] = useState<Message[]>([]);
+  const [user, setUser] = useState<User | null>(null);
+  const [messages, setMessages] = useState<FeedbackDTO[]>([]);
   const [name, setName] = useState('');
   const [body, setBody] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
+  const handleSignIn = async () => {
+    const result = await signInWithGooglePopup();
+    await createUserDocumentFromAuth(result.user);
+  };
+
+  const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
     if (!body.trim()) return;
-    setMessages((prev) => [
-      { id: Date.now(), name: name.trim() || 'Anonymous', body: body.trim() },
-      ...prev,
-    ]);
-    setBody('');
-    setName('');
+    if (!name.trim() && !user?.displayName) return;
+    setIsSubmitting(true);
+
+    try {
+      const finalName = name.trim() || user?.displayName || 'Anonymous';
+
+      await createFeedbackDocument(finalName, body.trim());
+      const data = await getFeedbackStream();
+      setMessages(data);
+      setBody('');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
+
+  useEffect(() => {
+    const unsub = onAuthStateChanged(auth, (userAuth) => {
+      setUser(userAuth);
+    });
+    return unsub;
+  }, []);
+
+  useEffect(() => {
+    const load = async () => {
+      setIsLoading(true);
+      const data = await getFeedbackStream();
+      setMessages(data);
+      setIsLoading(false);
+    };
+    load();
+  }, []);
 
   return (
     <Section
       id="message-board"
       label="Message Board"
       title="Leave a Note"
-      kicker="Drop a message; this board is local‑state only and refreshes per session"
+      kicker="Sign in with Google to post, and read notes from the old site."
     >
-      <form onSubmit={handleSubmit} className={styles.form}>
-        <label className={styles.label}>
-          Name <span className="text-neutral-500">(optional)</span>
-          <input
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className={styles.input}
-            placeholder="Who are you?"
-          />
-        </label>
-        <label className={styles.label}>
-          Message
-          <textarea
-            value={body}
-            onChange={(e) => setBody(e.target.value)}
-            className={styles.textarea}
-            placeholder="Let me know something!"
-          />
-        </label>
-        <button type="submit" className={styles.submit}>
-          Post message
-        </button>
-      </form>
+      <div className={styles.container}>
+        {!user ? (
+          <button type="button" onClick={handleSignIn} className={styles.signInButton}>
+            Sign in with Google to leave feedback
+          </button>
+        ) : (
+          <form onSubmit={handleSubmit} className={styles.form}>
+            <label className={styles.label}>
+              Name
+              <input
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder={'Your name'}
+                className={styles.input}
+              />
+            </label>
 
-      {messages.length > 0 && (
-        <ul className={styles.list}>
-          {messages.map((message) => (
-            <li key={message.id} className={styles.item}>
-              <div className={styles.author}>{message.name}</div>
-              <p>{message.body}</p>
-            </li>
-          ))}
-        </ul>
-      )}
+            <label className={styles.label}>
+              Message
+              <textarea
+                value={body}
+                onChange={(e) => setBody(e.target.value)}
+                className={styles.textarea}
+                placeholder="Say something nice, weird, or interesting."
+              />
+            </label>
+
+            <button type="submit" className={styles.submit} disabled={isSubmitting || !body.trim()}>
+              {isSubmitting ? 'Posting…' : 'Post message'}
+            </button>
+          </form>
+        )}
+
+        <div className={styles.listWrapper}>
+          {isLoading ? (
+            <p className="text-xs text-neutral-500">Loading messages…</p>
+          ) : messages.length === 0 ? (
+            <p className="text-xs text-neutral-500">No messages yet. Be the first.</p>
+          ) : (
+            <ul className={styles.list}>
+              {messages.map((msg) => (
+                <li key={msg.id} className={styles.item}>
+                  <div className={styles.meta}>
+                    <span className={styles.name}>{msg.name || 'Anonymous'}</span>
+                    <span className={styles.date}>{formatFeedbackDate(msg.date)}</span>
+                  </div>
+                  <p>{msg.message}</p>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </div>
     </Section>
   );
 }
