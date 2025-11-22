@@ -18,6 +18,7 @@ export function AboutSection() {
       label="About"
       title="Aaron Cheng"
       kicker="Software developer, LSU grad, builder of web and desktop tools"
+      subtleOnMount
     >
       <div className={styles.wrapper}>
         <div className={styles.imageWrapper}>
