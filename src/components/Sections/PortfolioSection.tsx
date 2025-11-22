@@ -1,6 +1,6 @@
-import { PORTFOLIO_CERTIFICATIONS, type Cert } from '../../assets/certifications';
-import { PORTFOLIO_PROJECTS } from '../../assets/projects';
-import { techLogos, type TechKey } from '../../assets/techLogos';
+import { PORTFOLIO_CERTIFICATIONS, type PortfolioCert } from '../../assets/certifications';
+import { PORTFOLIO_PROJECTS, type PortfolioProject } from '../../assets/projects';
+import { techLogos } from '../../assets/techLogos';
 import { Section } from './Section';
 
 const styles = {
@@ -36,7 +36,7 @@ export function PortfolioSection() {
     >
       <div className={styles.sectionDivider}>
         <div className={styles.certsWrapper}>
-          {PORTFOLIO_CERTIFICATIONS.map((cert: Cert) => (
+          {PORTFOLIO_CERTIFICATIONS.map((cert: PortfolioCert) => (
             <Certification key={cert.alt} {...cert} />
           ))}
         </div>
@@ -47,7 +47,6 @@ export function PortfolioSection() {
               key={project.name}
               name={project.name}
               href={project.href}
-              stack={project.stack}
               description={project.description}
               image={project.image}
               techs={project.techs}
@@ -59,7 +58,7 @@ export function PortfolioSection() {
   );
 }
 
-function Certification({ alt, url, src, issued }: Cert) {
+function Certification({ alt, url, src, issued }: PortfolioCert) {
   return (
     <a key={alt} href={url} target="_blank" rel="noreferrer" className={styles.certCard}>
       <img src={src} alt={alt} className={styles.certImg} />
@@ -69,15 +68,7 @@ function Certification({ alt, url, src, issued }: Cert) {
   );
 }
 
-type ProjectProps = {
-  name: string;
-  href: string;
-  stack: string;
-  description: string;
-  image: string;
-  techs: TechKey[];
-};
-function Project({ name, href, description, image, techs }: ProjectProps) {
+function Project({ name, href, description, image, techs }: PortfolioProject) {
   return (
     <article className={styles.card}>
       <div className={styles.imgWrapper}>
