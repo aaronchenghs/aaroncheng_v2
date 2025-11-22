@@ -9,7 +9,7 @@ const styles = {
   certCard:
     'group flex flex-col items-center rounded-2xl border border-white/10 bg-neutral-900/40 p-4 ' +
     'transition hover:border-emerald-400 hover:bg-neutral-900/80 cursor-pointer',
-  certImg: 'h-24 w-24 object-contain mb-2',
+  certImg: 'h-24 w-24 object-contain mb-2 transition-transform duration-300 group-hover:scale-110',
   certText: 'mt-1 text-xs font-medium text-neutral-200',
   grid: 'grid gap-7 md:grid-cols-2 w-full max-w-4xl',
   card:
