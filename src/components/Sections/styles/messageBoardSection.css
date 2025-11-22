@@ -1,0 +1,32 @@
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.google-border-animate {
+  --angle: 0deg;
+  position: relative;
+  display: inline-flex;
+  border-radius: 9999px;
+  padding: 1px;
+  background: conic-gradient(
+    from var(--angle),
+    var(--google-blue),
+    var(--google-red),
+    var(--google-yellow),
+    var(--google-green),
+    var(--google-blue)
+  );
+  animation: border-spin 4s linear infinite;
+}
+
+.google-border-animate > button {
+  border-radius: 9999px;
+}
+
+@keyframes border-spin {
+  to {
+    --angle: 360deg;
+  }
+}

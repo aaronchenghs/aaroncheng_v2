@@ -22,7 +22,7 @@ export function ContactSection() {
       id="contact"
       label="Contact"
       title="Get in Touch"
-      kicker="Questions, collaborations or just a friendly hello"
+      kicker="Questions, collaborations or just a say hi!"
     >
       <ul className={styles.list}>
         {CONTACT_INFOS.map((method) => (

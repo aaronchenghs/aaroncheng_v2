@@ -10,6 +10,7 @@ import {
   signInWithGooglePopup,
   type FeedbackDTO,
 } from '../../lib/firebase';
+import './styles/messageBoardSection.css';
 
 const styles = {
   container: 'flex flex-col items-center gap-8',
@@ -95,13 +96,19 @@ export function MessageBoardSection() {
       id="message-board"
       label="Message Board"
       title="Leave a Note"
-      kicker="Sign in with Google to post, and read notes from the old site."
+      kicker="Sign in with Google to post, and read notes from other visitors!"
     >
       <div className={styles.container}>
         {!user ? (
-          <button type="button" onClick={handleSignIn} className={styles.signInButton}>
-            Sign in with Google to leave feedback
-          </button>
+          <div className="google-border-animate inline-flex rounded-full p-[1px]">
+            <button
+              type="button"
+              onClick={handleSignIn}
+              className={`${styles.signInButton} relative z-10`}
+            >
+              Sign in with Google to leave feedback
+            </button>
+          </div>
         ) : (
           <form onSubmit={handleSubmit} className={styles.form}>
             <label className={styles.label}>
