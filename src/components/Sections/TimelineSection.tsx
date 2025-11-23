@@ -8,13 +8,20 @@ const styles = {
   bullet:
     'absolute -left-[9px] mt-1 h-4 w-4 rounded-full border-2 border-emerald-400 bg-neutral-950 ' +
     'shadow-[0_0_0_4px_rgba(16,185,129,0.25)]',
-  headerRow: 'flex flex-wrap items-baseline gap-2',
+  headerRow: 'flex flex-wrap items-center gap-2',
   period:
     'text-[0.7rem] pl-4 font-mono uppercase tracking-[0.15em] text-neutral-400 ' +
     'bg-neutral-900/70 px-2 py-1 rounded-full',
-  typeBadge:
-    'text-[0.65rem] uppercase tracking-[0.16em] rounded-full border border-emerald-500/40 ' +
-    'bg-emerald-500/10 px-2 py-[2px] text-emerald-300',
+  typeBadgeBase: 'text-[0.65rem] uppercase tracking-[0.16em] rounded-full px-2 py-[2px] border',
+  typeBadgeByType: {
+    Education: 'border-indigo-400/60 bg-indigo-500/10 text-indigo-200',
+    Internship: 'border-amber-400/60 bg-amber-500/10 text-amber-200',
+    Career: 'border-emerald-400/60 bg-emerald-500/10 text-emerald-200',
+  },
+  iconWrapper:
+    'ml-auto flex h-7 w-7 items-center justify-center rounded-full border border-white/15 ' +
+    'bg-neutral-900/80',
+  iconImg: 'h-4 w-4 object-contain',
   title: 'mt-2 text-sm font-semibold text-white',
   orgRow: 'mt-1 flex flex-wrap items-center gap-2 text-[0.8rem] text-neutral-400',
   org: 'font-medium',
@@ -35,7 +42,16 @@ export function TimelineSection() {
               <div>
                 <div className={styles.headerRow}>
                   <span className={styles.period}>{item.period}</span>
-                  <span className={styles.typeBadge}>{item.type}</span>
+
+                  <span className={`${styles.typeBadgeBase} ${styles.typeBadgeByType[item.type]}`}>
+                    {item.type}
+                  </span>
+
+                  {item.icon && (
+                    <span className={styles.iconWrapper}>
+                      <img src={item.icon} alt={`${item.org} icon`} className={styles.iconImg} />
+                    </span>
+                  )}
                 </div>
 
                 <h3 className={styles.title}>{item.title}</h3>
