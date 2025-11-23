@@ -106,7 +106,7 @@ export function MessageBoardSection() {
               onClick={handleSignIn}
               className={`${styles.signInButton} relative z-10`}
             >
-              Sign in with Google to leave feedback
+              Sign in with Google to post a message
             </button>
           </div>
         ) : (

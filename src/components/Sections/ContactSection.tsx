@@ -27,9 +27,9 @@ export function ContactSection() {
       <ul className={styles.list}>
         {CONTACT_INFOS.map((method) => (
           <li key={method.name} className={styles.item}>
-            <div className={styles.iconWrapper}>
+            <a href={method.link} className={styles.iconWrapper} target="_blank" rel="noreferrer">
               <img src={method.path} alt={method.name} className={styles.iconImg} />
-            </div>
+            </a>
 
             <div className={styles.content}>
               <div className={styles.title}>{method.name}</div>
