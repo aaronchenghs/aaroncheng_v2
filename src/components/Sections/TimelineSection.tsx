@@ -2,7 +2,7 @@ import { TIMELINE_ENTRIES } from '../../assets/timelineEntries';
 import { Section } from './Section';
 
 const styles = {
-  wrapper: 'relative mx-auto w-full max-w-3xl',
+  wrapper: 'relative mx-auto w-full max-w-5xl',
   list: 'space-y-8 border-l border-white/10 pl-6',
   item: 'relative',
   bullet:
@@ -25,7 +25,7 @@ const styles = {
 
 export function TimelineSection() {
   return (
-    <Section id="timeline" label="Timeline" title="My Timeline" kicker="What's led me up to today">
+    <Section id="timeline" label="Timeline" title="My Timeline" kicker="What's led me to today">
       <div className={styles.wrapper}>
         <ol className={styles.list}>
           {TIMELINE_ENTRIES.map((item) => (
