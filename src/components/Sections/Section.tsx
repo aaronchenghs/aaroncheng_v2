@@ -31,7 +31,7 @@ export function Section({ id, label, title, kicker, children }: SectionProps) {
         whileInView: { opacity: 1, y: 0 },
         viewport: {
           once: true,
-          amount: 0.2,
+          amount: 0.05,
           margin: '-10% 0px 0px 0px',
         },
         transition: { duration: 0.4 },
