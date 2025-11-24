@@ -6,7 +6,7 @@ export const PORTFOLIO_CERTIFICATIONS = [
     src: AWSCloudPractitioner,
     alt: 'AWS Cloud Practitioner',
     url: 'https://www.credly.com/badges/3b237b28-d064-4c7a-a2be-7951f26cb70d/public_url',
-    issued: 'Sep 2025',
+    issued: 'Sep 2024',
   },
   {
     src: AWSDeveloperAssociate,
