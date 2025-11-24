@@ -95,7 +95,7 @@ export function MessageBoardSection() {
     <Section
       id="message-board"
       label="Message Board"
-      title="Leave a Note"
+      title="Leave a Note!"
       kicker="Sign in with Google to post, and read notes from other visitors!"
     >
       <div className={styles.container}>

@@ -22,7 +22,9 @@ const styles = {
     'inline-flex items-center text-sm md:text-base font-semibold text-white hover:text-emerald-400 transition-colors',
   desc: 'pt-1 text-xs md:text-sm text-neutral-300',
   stackRow: 'w-full mt-2 flex flex-wrap justify-center items-center gap-2',
-  stackIcons: 'flex flex-wrap items-center gap-1.5',
+  stackIcons: 'flex flex-wrap items-center gap-2',
+  stackIconWrapper:
+    'flex h-7 w-7 md:h-8 md:w-8 items-center justify-center rounded-full bg-neutral-200/20',
   stackIcon: 'h-4 w-4 md:h-5 md:w-5 object-contain',
 } as const;
 
@@ -60,7 +62,7 @@ export function PortfolioSection() {
 
 function Certification({ alt, url, src, issued }: PortfolioCert) {
   return (
-    <a key={alt} href={url} target="_blank" rel="noreferrer" className={styles.certCard}>
+    <a href={url} target="_blank" rel="noreferrer" className={styles.certCard}>
       <img src={src} alt={alt} className={styles.certImg} />
       <span className={styles.certText}>{alt}</span>
       <span className={styles.certText}>Issued {issued}</span>
@@ -86,12 +88,9 @@ function Project({ name, href, description, image, techs }: PortfolioProject) {
       <div className={styles.stackRow}>
         <div className={styles.stackIcons}>
           {techs.map((key) => (
-            <img
-              key={`${name}-${key}`}
-              src={techLogos[key]}
-              alt={key}
-              className={styles.stackIcon}
-            />
+            <span key={`${name}-${key}`} className={styles.stackIconWrapper}>
+              <img src={techLogos[key]} alt={key} className={styles.stackIcon} />
+            </span>
           ))}
         </div>
       </div>
