@@ -34,7 +34,7 @@ export function Section({ id, label, title, kicker, children }: SectionProps) {
           amount: 0.1,
           margin: '-10% 0px 0px 0px',
         },
-        transition: { duration: 0.4 },
+        transition: { duration: 0.8 },
       };
 
   return (
