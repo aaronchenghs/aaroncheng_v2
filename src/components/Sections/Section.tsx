@@ -32,7 +32,6 @@ export function Section({
 }: SectionProps) {
   const initialAppearance = subtleOnMount ? { opacity: 0 } : { opacity: 0, y: 30 };
   const inViewAppearance = subtleOnMount ? { opacity: 1 } : { opacity: 1, y: 0 };
-
   return (
     <motion.section
       id={id}

@@ -27,14 +27,15 @@ export function AboutSection() {
 
         <div className={styles.text}>
           <p>
-            I’m an from Louisiana who loves making things. I work primarily with TypeScript, React
-            and .NET, shipping production-ready apps with high emphasis on reliability and polish.
-            Outside of work, I dive into motion-heavy UIs, small SaaS-y ideas and ways to merge
-            technology with my interests in law and policy.
+            I’m a software enginner from Louisiana, contantly looking forward to new opportunities.
+            I currently work with web development stacks as well as Python, focused on shippability
+            and interactive experiences. Outside of work, I tinker with my own small software
+            projects, enjoy staying active, and look for connections with the people around me.
           </p>
           <p className="mt-4">
-            This site is the laboratory for my experiments and the place where my finished projects
-            live. Take a look around—you’ll find certs, apps, and perhaps a few fun surprises.
+            This site is a compact display of my professional life as well as a home for the
+            software that I've built. Take a look around—you’ll find certs, apps, and maybe some fun
+            surprises. Don't forget to leave me a message on my board!
           </p>
         </div>
 

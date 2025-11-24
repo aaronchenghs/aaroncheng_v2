@@ -5,7 +5,8 @@ const styles = {
   list: 'space-y-5 w-full max-w-2xl md:max-w-3xl mx-auto',
   item:
     'relative flex items-center gap-4 md:gap-6 justify-between md:justify-center ' +
-    'rounded-2xl border border-white/10 bg-neutral-900/70 p-5',
+    'rounded-2xl border border-white/10 bg-neutral-900/70 p-5 ' +
+    'transition hover:border-emerald-400',
   iconWrapper:
     'flex h-10 w-10 items-center justify-center rounded-full bg-neutral-800/80 flex-shrink-0 ' +
     'md:absolute md:left-5 md:top-1/2 md:-translate-y-1/2',
