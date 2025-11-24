@@ -73,7 +73,7 @@ export const PORTFOLIO_PROJECTS: {
   },
   {
     name: 'This Website!',
-    href: 'https://i.ibb.co/Dfw35YyW/AC-logo-1.png',
+    href: 'https://github.com/aaronchenghs/aaroncheng_v2',
     description:
       'The current version of my personal portfolio site, the one you are visiting now! Click to view it`s source code.',
     image: 'https://i.ibb.co/9mRTXPk0/Capture.png',
