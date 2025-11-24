@@ -34,7 +34,7 @@ export function AppFooter() {
         </div>
         <div className={styles.right}>
           <a
-            href="https://aaroncheng.netlify.app"
+            href="https://aaroncheng-legacy.netlify.app"
             target="_blank"
             rel="noreferrer"
             className={styles.legacyLink}
