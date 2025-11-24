@@ -30,7 +30,7 @@ export const TIMELINE_ENTRIES: TimelineEntry[] = [
     type: 'Internship',
     icon: 'https://img.icons8.com/fluency/48/briefcase.png',
     description:
-      'Part-time internship during my LSU studies, implementing in-game UI and 2D interfaces using TypeScript and custom SDK.',
+      'Part-time internship during my LSU studies, implementing in-game UI and 2D interfaces using TypeScript and a custom SDK.',
   },
   {
     id: 'early-professional',

@@ -7,7 +7,9 @@ const styles = {
   root: 'sticky top-0 z-30 border-b border-white/5 bg-neutral-950/70 backdrop-blur',
   nav: 'mx-auto flex max-w-8xl items-center justify-between px-4 py-3 select-none',
   brandButton:
-    'text-sm font-semibold tracking-[0.25em] uppercase text-neutral-400 hover:text-white cursor-pointer select-none',
+    'whitespace-nowrap text-[0.7rem] sm:text-sm font-semibold ' +
+    'tracking-[0.18em] sm:tracking-[0.25em] uppercase text-neutral-400 ' +
+    'hover:text-white cursor-pointer select-none',
   navContainer: 'flex gap-4',
   navLink: 'text-xs font-medium text-neutral-300 transition-colors hover:text-white',
 } as const;

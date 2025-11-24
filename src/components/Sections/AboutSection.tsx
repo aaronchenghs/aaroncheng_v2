@@ -28,11 +28,11 @@ export function AboutSection() {
 
         <div className={styles.text}>
           <p>
-            I’m a software enginner from Louisiana, contantly looking forward to new opportunities.
-            I currently work with web development stacks as well as Python, focused on shippability
-            and interactive experiences. Outside of work, I tinker with my own small software
-            projects, enjoy staying active, hang out with my pup Luna, and look for connections with
-            the people around me.
+            I’m a software engineer from Louisiana, contantly looking forward to new opportunities.
+            I currently work with web development stacks and Python, focused on shippability and
+            interactive experiences. Outside of work, I tinker with my own small software projects,
+            enjoy staying active, hang out with my pup Luna, and look for connections with the
+            people around me.
           </p>
           <p className="mt-4">
             This site is a compact display of my professional life as well as a home for some of the
