@@ -1,12 +1,12 @@
 .spotlight-bg {
   background-color: rgb(var(--black-rgb));
   background-image:
-    radial-gradient(circle at 0% 0%, rgba(var(--emerald-500-rgb), 0.1) 0, transparent 50%),
-    radial-gradient(circle at 100% 100%, rgba(var(--emerald-500-rgb), 0.07) 0, transparent 45%),
-    radial-gradient(circle at 50% 120%, rgba(var(--emerald-500-rgb), 0.05) 0, transparent 65%);
+    radial-gradient(circle at 0% 0%, rgba(var(--emerald-500-rgb), 0.1) 0, transparent 55%),
+    radial-gradient(circle at 100% 100%, rgba(var(--emerald-500-rgb), 0.07) 0, transparent 50%),
+    radial-gradient(circle at 50% 120%, rgba(var(--emerald-500-rgb), 0.05) 0, transparent 70%);
   opacity: 1;
   filter: blur(1.5px);
-  animation: spotlight-pan 28s ease-in-out infinite alternate;
+  animation: spotlight-pan 25s ease-in-out infinite alternate;
   will-change: background-position, opacity, transform;
 }
 

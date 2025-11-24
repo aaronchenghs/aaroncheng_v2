@@ -2,6 +2,7 @@ import { PORTFOLIO_CERTIFICATIONS, type PortfolioCert } from '../../assets/certi
 import { PORTFOLIO_PROJECTS, type PortfolioProject } from '../../assets/projects';
 import { techLogos } from '../../assets/techLogos';
 import { SECTION_SELECTORS } from '../../lib/sectionSelectors';
+import { LoadableImage } from '../Common/LoadableImage';
 import { Section } from './Section';
 
 const styles = {
@@ -17,6 +18,7 @@ const styles = {
     'group relative overflow-hidden rounded-2xl border border-white/5 bg-neutral-900/40 p-6 transition ' +
     'hover:border-emerald-400 hover:bg-neutral-900/80',
   imgWrapper: 'h-40 mb-4 overflow-hidden rounded-lg bg-neutral-800',
+  projectImgLink: 'block h-full w-full',
   img: 'h-full w-full object-cover transition-transform duration-300 group-hover:scale-105',
   name: 'mb-1 text-sm md:text-base font-semibold text-white',
   nameLink:
@@ -75,8 +77,8 @@ function Project({ name, href, description, image, techs }: PortfolioProject) {
   return (
     <article className={styles.card}>
       <div className={styles.imgWrapper}>
-        <a href={href} target="_blank" rel="noreferrer">
-          <img src={image} alt={name} className={styles.img} />
+        <a href={href} title={`${name}-image`} target="_blank" rel="noreferrer" className={styles.projectImgLink}>
+          <LoadableImage src={image} alt={name} className={styles.img} />
         </a>
       </div>
 

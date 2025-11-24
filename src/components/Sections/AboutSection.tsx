@@ -8,8 +8,9 @@ const styles = {
   wrapper: 'flex flex-col gap-8 md:flex-row md:items-center',
   imageWrapper:
     'relative shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-neutral-900/20 ' +
-    'h-48 w-48 md:h-60 md:w-60 mx-auto md:mx-0',
-  image: 'h-full w-full object-cover',
+    'h-48 w-48 md:h-60 md:w-60 mx-auto md:mx-0 ' +
+    'transition duration-300 hover:border-emerald-400 hover:bg-neutral-900/40',
+  image: 'h-full w-full object-cover transition-transform duration-500 group-hover:scale-105',
   text: 'flex-1 text-sm md:text-[0.95rem] leading-relaxed text-neutral-300',
 } as const;
 
@@ -22,8 +23,13 @@ export function AboutSection() {
       kicker="Software developer, LSU grad, builder"
     >
       <div className={styles.wrapper}>
+
         <div className={styles.imageWrapper}>
-          <LoadableImage src={Portrait} alt="Portrait of Aaron Cheng" className={styles.image} />
+          <LoadableImage
+            src={Portrait}
+            alt="Portrait of Aaron Cheng"
+            className={styles.image}
+          />
         </div>
 
         <div className={styles.text}>
@@ -42,8 +48,13 @@ export function AboutSection() {
         </div>
 
         <div className={styles.imageWrapper}>
-          <LoadableImage src={Portrait2} alt="Portrait of Aaron Cheng 2" className={styles.image} />
+          <LoadableImage
+            src={Portrait2}
+            alt="Portrait of Aaron Cheng 2"
+            className={styles.image}
+          />
         </div>
+
       </div>
     </Section>
   );
