@@ -33,7 +33,7 @@ const styles = {
     'inline-flex items-center rounded-full bg-white px-4 py-2 text-xs font-semibold ' +
     'text-neutral-900 shadow-lg shadow-white/20 transition hover:bg-neutral-100 ' +
     'disabled:cursor-not-allowed disabled:opacity-60',
-  listWrapper: 'w-full max-w-3xl space-y-4',
+  listWrapper: 'w-full max-w-4xl space-y-4',
   list: 'mt-6 w-full space-y-3 text-sm text-neutral-200',
   item:
     'rounded-2xl border border-white/5 bg-neutral-900/60 px-4 py-3 text-xs text-neutral-200' +

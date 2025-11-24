@@ -2,6 +2,7 @@ import { ReactLenis } from 'lenis/react';
 import type { ReactNode } from 'react';
 import { AppHeader } from './components/AppHeader';
 import { FogBackground } from './components/FogBackground/FogBackground';
+import { AppFooter } from './components/AppFooter';
 
 const styles = {
   root: 'relative min-h-screen text-neutral-50',
@@ -21,10 +22,11 @@ export function Layout({ children }: LayoutProps) {
         smoothWheel: true,
       }}
     >
+      <FogBackground />
       <div className={styles.root}>
-        <FogBackground />
         <AppHeader />
         <main className={styles.main}>{children}</main>
+        <AppFooter />
       </div>
     </ReactLenis>
   );

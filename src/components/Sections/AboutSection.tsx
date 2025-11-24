@@ -18,7 +18,7 @@ export function AboutSection() {
       id={SECTION_SELECTORS.ABOUT}
       label="About"
       title="Aaron Cheng"
-      kicker="Software developer, LSU grad, builder of web and desktop tools"
+      kicker="Software developer, LSU grad, builder"
       subtleOnMount
     >
       <div className={styles.wrapper}>
@@ -31,12 +31,13 @@ export function AboutSection() {
             I’m a software enginner from Louisiana, contantly looking forward to new opportunities.
             I currently work with web development stacks as well as Python, focused on shippability
             and interactive experiences. Outside of work, I tinker with my own small software
-            projects, enjoy staying active, and look for connections with the people around me.
+            projects, enjoy staying active, hang out with my pup Luna, and look for connections with
+            the people around me.
           </p>
           <p className="mt-4">
-            This site is a compact display of my professional life as well as a home for the
+            This site is a compact display of my professional life as well as a home for some of the
             software that I've built. Take a look around—you’ll find certs, apps, and maybe some fun
-            surprises. Don't forget to leave me a message on my board!
+            surprises. Don't forget to leave a message on my board!
           </p>
         </div>
 
