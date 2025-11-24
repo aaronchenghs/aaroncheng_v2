@@ -1,4 +1,5 @@
 import { TIMELINE_ENTRIES } from '../../assets/timelineEntries';
+import { SECTION_SELECTORS } from '../../lib/sectionSelectors';
 import { Section } from './Section';
 
 const styles = {
@@ -32,7 +33,12 @@ const styles = {
 
 export function TimelineSection() {
   return (
-    <Section id="timeline" label="Timeline" title="My Timeline" kicker="What's led me to today">
+    <Section
+      id={SECTION_SELECTORS.TIMELINE}
+      label="Timeline"
+      title="My Timeline"
+      kicker="What's led me to today"
+    >
       <div className={styles.wrapper}>
         <ol className={styles.list}>
           {TIMELINE_ENTRIES.map((item) => (

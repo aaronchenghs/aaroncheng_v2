@@ -1,4 +1,5 @@
 import { CONTACT_INFOS } from '../../assets/contacts';
+import { SECTION_SELECTORS } from '../../lib/sectionSelectors';
 import { Section } from './Section';
 
 const styles = {
@@ -20,7 +21,7 @@ const styles = {
 export function ContactSection() {
   return (
     <Section
-      id="contact"
+      id={SECTION_SELECTORS.CONTACT}
       label="Contact"
       title="Get in Touch"
       kicker="Questions, collaborations or just a say hi!"

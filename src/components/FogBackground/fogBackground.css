@@ -1,0 +1,49 @@
+.fog-layer-1 {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.11) 0, transparent 55%),
+    radial-gradient(circle at 80% 30%, rgba(255, 255, 255, 0.085) 0, transparent 50%),
+    radial-gradient(circle at 10% 80%, rgba(255, 255, 255, 0.075) 0, transparent 55%);
+  filter: blur(26px);
+  opacity: 0.78;
+  animation: fog-move-1 40s linear infinite;
+}
+
+.fog-layer-2 {
+  background:
+    radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.075) 0, transparent 55%),
+    radial-gradient(circle at 85% 80%, rgba(255, 255, 255, 0.06) 0, transparent 55%);
+  filter: blur(32px);
+  opacity: 0.38;
+  animation: fog-move-2 70s linear infinite;
+}
+
+@keyframes fog-move-1 {
+  0% {
+    transform: translate3d(-5%, 0, 0);
+  }
+  50% {
+    transform: translate3d(5%, 2%, 0);
+  }
+  100% {
+    transform: translate3d(-5%, 0, 0);
+  }
+}
+
+@keyframes fog-move-2 {
+  0% {
+    transform: translate3d(3%, -3%, 0);
+  }
+  50% {
+    transform: translate3d(-4%, 3%, 0);
+  }
+  100% {
+    transform: translate3d(3%, -3%, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fog-layer-1,
+  .fog-layer-2 {
+    animation: none;
+  }
+}

@@ -1,6 +1,7 @@
 import { Section } from './Section';
 import Portrait from '../../assets/images/Portrait_Pro.png';
 import Portrait2 from '../../assets/images/Portrait_2.png';
+import { SECTION_SELECTORS } from '../../lib/sectionSelectors';
 
 const styles = {
   wrapper: 'flex flex-col gap-8 md:flex-row md:items-center',
@@ -14,7 +15,7 @@ const styles = {
 export function AboutSection() {
   return (
     <Section
-      id="about"
+      id={SECTION_SELECTORS.ABOUT}
       label="About"
       title="Aaron Cheng"
       kicker="Software developer, LSU grad, builder of web and desktop tools"

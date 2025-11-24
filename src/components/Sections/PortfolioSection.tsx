@@ -1,6 +1,7 @@
 import { PORTFOLIO_CERTIFICATIONS, type PortfolioCert } from '../../assets/certifications';
 import { PORTFOLIO_PROJECTS, type PortfolioProject } from '../../assets/projects';
 import { techLogos } from '../../assets/techLogos';
+import { SECTION_SELECTORS } from '../../lib/sectionSelectors';
 import { Section } from './Section';
 
 const styles = {
@@ -31,7 +32,7 @@ const styles = {
 export function PortfolioSection() {
   return (
     <Section
-      id="portfolio"
+      id={SECTION_SELECTORS.PORTFOLIO}
       label="Portfolio"
       title="Projects & Certifications"
       kicker="A sampling of what I’ve built"

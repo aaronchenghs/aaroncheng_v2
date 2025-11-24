@@ -11,6 +11,7 @@ import {
   type FeedbackDTO,
 } from '../../lib/firebase';
 import './styles/messageBoardSection.css';
+import { SECTION_SELECTORS } from '../../lib/sectionSelectors';
 
 const styles = {
   container: 'flex flex-col items-center gap-8',
@@ -94,7 +95,7 @@ export function MessageBoardSection() {
 
   return (
     <Section
-      id="message-board"
+      id={SECTION_SELECTORS.MESSAGE_BOARD}
       label="Message Board"
       title="Leave a Note!"
       kicker="Sign in with Google to post, and read notes from other visitors!"
