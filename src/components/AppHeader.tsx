@@ -41,18 +41,18 @@ export function AppHeader() {
         </div>
         <div className={styles.navContainer}>
           <a
-            href={`#${SECTION_SELECTORS.PORTFOLIO}`}
-            className={styles.navLink}
-            onClick={scrollToSection(`#${SECTION_SELECTORS.PORTFOLIO}`)}
-          >
-            Portfolio
-          </a>
-          <a
             href={`#${SECTION_SELECTORS.TIMELINE}`}
             className={styles.navLink}
             onClick={scrollToSection(`#${SECTION_SELECTORS.TIMELINE}`)}
           >
             Timeline
+          </a>
+          <a
+            href={`#${SECTION_SELECTORS.PORTFOLIO}`}
+            className={styles.navLink}
+            onClick={scrollToSection(`#${SECTION_SELECTORS.PORTFOLIO}`)}
+          >
+            Portfolio
           </a>
           <a
             href={`#${SECTION_SELECTORS.CONTACT}`}
