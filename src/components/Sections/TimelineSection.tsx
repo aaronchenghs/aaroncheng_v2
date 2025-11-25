@@ -1,4 +1,5 @@
 import { TIMELINE_ENTRIES } from '../../assets/timelineEntries';
+import { COLORS } from '../../lib/colors';
 import { SECTION_SELECTORS } from '../../lib/sectionSelectors';
 import { Section } from './Section';
 
@@ -11,7 +12,7 @@ const styles = {
   bullet:
     'absolute -left-[9px] mt-1 h-4 w-4 rounded-full border-2 border-emerald-400 bg-neutral-950 ' +
     'shadow-[0_0_0_4px_rgba(16,185,129,0.25)] transition-transform transition-shadow duration-200 ' +
-    'group-hover:scale-110 group-hover:shadow-[0_0_0_6px_rgba(16,185,129,0.35)]',
+    `group-hover:scale-110 group-hover:shadow-[0_0_0_6px_${COLORS.FOREST}]`,
   headerRow: 'flex flex-wrap items-center gap-2',
   period:
     'text-[0.7rem] pl-4 font-mono uppercase tracking-[0.15em] text-neutral-400 ' +
