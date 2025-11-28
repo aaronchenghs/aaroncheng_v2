@@ -45,15 +45,6 @@ export const PORTFOLIO_PROJECTS: {
     techs: ['TS', 'REACT', 'REDUX', 'MUI', 'SASS'],
   },
   {
-    name: 'Portfolio Website (Legacy)',
-    href: 'https://aaroncheng.netlify.app/',
-    description:
-      'The first major version of my personal site, built with React, Sass, Material UI, and Firebase. ' +
-      'The repo shows the foundations that this v2 is built on.',
-    image: 'https://i.ibb.co/QJxx9dG/webLogo.png',
-    techs: ['JS', 'HTML5', 'SASS', 'REACT', 'MUI', 'FIREBASE'],
-  },
-  {
     name: 'Exodus',
     href: 'https://www.exodusgbw.io/',
     description:
@@ -70,6 +61,23 @@ export const PORTFOLIO_PROJECTS: {
       'The repo contains the full source and setup.',
     image: 'https://i.ibb.co/HDQ5xX1/Akon.png',
     techs: ['PYTHON', 'DISCORD'],
+  },
+  {
+    name: 'Portfolio Website (Legacy)',
+    href: 'https://aaroncheng-legacy.netlify.app/',
+    description:
+      'The first major version of my personal site, built with React, Sass, Material UI, and Firebase. ' +
+      'The repo shows the foundations that this v2 is built on.',
+    image: 'https://i.ibb.co/QJxx9dG/webLogo.png',
+    techs: ['JS', 'HTML5', 'SASS', 'REACT', 'MUI', 'FIREBASE'],
+  },
+  {
+    name: 'This Website!',
+    href: 'https://github.com/aaronchenghs/aaroncheng_v2',
+    description:
+      'The current version of my personal portfolio site, the one you are visiting now! Click to view it`s source code.',
+    image: 'https://i.ibb.co/9mRTXPk0/Capture.png',
+    techs: ['TS', 'REACT', 'TAILWIND', 'FIREBASE'],
   },
 ];
 

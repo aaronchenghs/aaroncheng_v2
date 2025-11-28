@@ -1,6 +1,9 @@
 import { PORTFOLIO_CERTIFICATIONS, type PortfolioCert } from '../../assets/certifications';
 import { PORTFOLIO_PROJECTS, type PortfolioProject } from '../../assets/projects';
 import { techLogos } from '../../assets/techLogos';
+import { COLORS } from '../../lib/colors';
+import { SECTION_SELECTORS } from '../../lib/sectionSelectors';
+import { LoadableImage } from '../Common/LoadableImage';
 import { Section } from './Section';
 
 const styles = {
@@ -8,28 +11,44 @@ const styles = {
   certsWrapper: 'flex flex-wrap justify-center gap-6 w-full max-w-4xl',
   certCard:
     'group flex flex-col items-center rounded-2xl border border-white/10 bg-neutral-900/40 p-4 ' +
-    'transition hover:border-emerald-400 hover:bg-neutral-900/80 cursor-pointer',
-  certImg: 'h-24 w-24 object-contain mb-2 transition-transform duration-300 group-hover:scale-110',
+    'transition duration-300 hover:border-emerald-400 hover:bg-neutral-900/80 cursor-pointer ' +
+    `hover:-translate-y-[2px] hover:shadow-[0_0_38px_${COLORS.EMERALD}]`,
+  certImg:
+    'mb-2 h-24 w-24 object-contain mx-auto transition-transform duration-300 ' +
+    `group-hover:scale-110 group-hover:shadow-[0_0_32px_${COLORS.RIVER}] group-hover:rounded-xl`,
   certText: 'mt-1 text-xs font-medium text-neutral-200',
+
   grid: 'grid gap-7 md:grid-cols-2 w-full max-w-4xl',
   card:
-    'group relative overflow-hidden rounded-2xl border border-white/5 bg-neutral-900/40 p-6 transition ' +
-    'hover:border-emerald-400 hover:bg-neutral-900/80',
-  imgWrapper: 'h-40 mb-4 overflow-hidden rounded-lg bg-neutral-800',
-  img: 'h-full w-full object-cover transition-transform duration-300 group-hover:scale-105',
+    'group relative overflow-hidden rounded-2xl border border-white/5 bg-neutral-900/40 p-6 ' +
+    'transition duration-300 hover:border-emerald-400 hover:bg-neutral-900/80 ' +
+    `hover:-translate-y-[2px] hover:shadow-[0_0_40px_${COLORS.EMERALD}]`,
+  imgWrapper:
+    'h-40 mb-4 overflow-hidden rounded-lg bg-neutral-800 flex items-center justify-center ' +
+    'transition-all duration-300 group-hover:ring-2 group-hover:ring-emerald-400/80 ' +
+    'group-hover:ring-offset-2 group-hover:ring-offset-neutral-950 ' +
+    `group-hover:shadow-[0_0_42px_${COLORS.RIVER}]`,
+  projectImgLink: 'block h-full w-full',
+  img:
+    'h-full w-full object-cover mx-auto transition-transform duration-300 ' +
+    'group-hover:scale-105',
+
   name: 'mb-1 text-sm md:text-base font-semibold text-white',
   nameLink:
-    'inline-flex items-center text-sm md:text-base font-semibold text-white hover:text-emerald-400 transition-colors',
+    'inline-flex items-center text-sm md:text-base font-semibold text-white ' +
+    'hover:text-emerald-400 transition-colors',
   desc: 'pt-1 text-xs md:text-sm text-neutral-300',
   stackRow: 'w-full mt-2 flex flex-wrap justify-center items-center gap-2',
-  stackIcons: 'flex flex-wrap items-center gap-1.5',
+  stackIcons: 'flex flex-wrap items-center gap-2',
+  stackIconWrapper:
+    'flex h-7 w-7 md:h-8 md:w-8 items-center justify-center rounded-full bg-neutral-200/20',
   stackIcon: 'h-4 w-4 md:h-5 md:w-5 object-contain',
 } as const;
 
 export function PortfolioSection() {
   return (
     <Section
-      id="portfolio"
+      id={SECTION_SELECTORS.PORTFOLIO}
       label="Portfolio"
       title="Projects & Certifications"
       kicker="A sampling of what I’ve built"
@@ -60,7 +79,7 @@ export function PortfolioSection() {
 
 function Certification({ alt, url, src, issued }: PortfolioCert) {
   return (
-    <a key={alt} href={url} target="_blank" rel="noreferrer" className={styles.certCard}>
+    <a href={url} target="_blank" rel="noreferrer" className={styles.certCard}>
       <img src={src} alt={alt} className={styles.certImg} />
       <span className={styles.certText}>{alt}</span>
       <span className={styles.certText}>Issued {issued}</span>
@@ -72,8 +91,14 @@ function Project({ name, href, description, image, techs }: PortfolioProject) {
   return (
     <article className={styles.card}>
       <div className={styles.imgWrapper}>
-        <a href={href} target="_blank" rel="noreferrer">
-          <img src={image} alt={name} className={styles.img} />
+        <a
+          href={href}
+          title={`${name}-image`}
+          target="_blank"
+          rel="noreferrer"
+          className={styles.projectImgLink}
+        >
+          <LoadableImage src={image} alt={name} className={styles.img} />
         </a>
       </div>
 
@@ -86,12 +111,9 @@ function Project({ name, href, description, image, techs }: PortfolioProject) {
       <div className={styles.stackRow}>
         <div className={styles.stackIcons}>
           {techs.map((key) => (
-            <img
-              key={`${name}-${key}`}
-              src={techLogos[key]}
-              alt={key}
-              className={styles.stackIcon}
-            />
+            <span key={`${name}-${key}`} className={styles.stackIconWrapper}>
+              <img src={techLogos[key]} alt={key} className={styles.stackIcon} />
+            </span>
           ))}
         </div>
       </div>

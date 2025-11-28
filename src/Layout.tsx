@@ -1,9 +1,11 @@
 import { ReactLenis } from 'lenis/react';
 import type { ReactNode } from 'react';
 import { AppHeader } from './components/AppHeader';
+import { AppFooter } from './components/AppFooter';
+import { SpotlightBackground } from './components/SpotlightBackground/SpotlightBackground';
 
 const styles = {
-  root: 'min-h-screen bg-gradient-to-b from-neutral-950 via-neutral-900 to-neutral-950 text-neutral-50',
+  root: 'relative min-h-screen text-neutral-50',
   main: 'mx-auto max-w-6xl px-4',
 } as const;
 
@@ -21,9 +23,11 @@ export function Layout({ children }: LayoutProps) {
         syncTouch: true,
       }}
     >
+      <SpotlightBackground />
       <div className={styles.root}>
         <AppHeader />
         <main className={styles.main}>{children}</main>
+        <AppFooter />
       </div>
     </ReactLenis>
   );

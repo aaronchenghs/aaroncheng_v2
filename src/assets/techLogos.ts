@@ -20,6 +20,7 @@ export const techLogos = {
   FLASK: 'https://www.vectorlogo.zone/logos/palletsprojects_flask/palletsprojects_flask-icon.svg',
   PANDAS: 'https://upload.wikimedia.org/wikipedia/commons/2/22/Pandas_mark.svg',
   NEXT: 'https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg',
+  TAILWIND: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg',
 } as const;
 
 export type TechKey = keyof typeof techLogos;

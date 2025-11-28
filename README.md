@@ -1,7 +1,7 @@
 # aaroncheng_v2
 
-Aaron Cheng's Personal Site.  
-Built with modern React, motion-heavy UI, and a small 3D layer.
+Aaron Cheng's personal site.  
+A motion-heavy, portfolio-driven single page built with modern React, Tailwind, and a soft animated “fog” background.
 
 ---
 
@@ -10,28 +10,56 @@ Built with modern React, motion-heavy UI, and a small 3D layer.
 - **Framework:** React + TypeScript
 - **Build Tool:** Vite
 - **Styling:** Tailwind CSS
-- **Animations:** Framer Motion
-- **Smooth Scrolling:** Lenis (`lenis/react`)
-- **3D / Visuals:** `@react-three/fiber`, `@react-three/drei`
+- **Animations / Motion:**
+  - Framer Motion (section reveal, micro-interactions)
+  - Lenis (`lenis/react`) for smooth, inertia-based scrolling
+- **Data / Backend:** Firebase (Auth + Firestore) for the message board
 - **Linting / Formatting:** ESLint (flat config) + Prettier
+- **Hosting:** Netlify
 
 ---
 
 ## Features
 
-- Sticky, translucent header with section anchors
-- Smooth, inertia-based scrolling using Lenis
-- Animated hero section (Framer Motion) with emphasis on typography and layout
-- Scroll-triggered section reveals for projects and content blocks
-- 3D scene in the hero (React Three Fiber + Drei) for subtle visual flair
-- Responsive layout tuned for desktop first, with sane mobile handling
-- Consistent code style enforced via ESLint + Prettier
+- **Sticky, translucent header**
+  - Section anchors for Portfolio, Timeline, Contact, Message Board
+  - Animated kaomoji “brand” button that also scrolls back to top
+- **Smooth scrolling**
+  - Lenis-powered inertial scrolling between sections
+- **Subtle animated fog background**
+  - CSS-only, GPU-friendly
+  - Gives depth without overpowering content
+- **About section**
+  - Responsive layout (portrait on the left, text on the right)
+  - Stacks vertically on mobile
+- **Portfolio grid**
+  - Projects displayed as responsive cards
+  - Tech stacks rendered as icon pills (React, TS, Firebase, etc.)
+  - Cards link out to GitHub / demos
+- **Certifications row**
+  - Clickable AWS Credly badges
+  - Hover states and issuance metadata
+- **Timeline section**
+  - Vertical timeline of education, internships, and career
+  - Type-based color badges (Education, Internship, Career)
+  - Optional icon per node for visual context
+- **Contact section**
+  - Email, phone, WhatsApp, LinkedIn, GitHub
+  - Icons on the left, text centered on desktop
+  - Responsive layout that reflows cleanly on mobile
+- **Message Board**
+  - Google sign-in via Firebase Auth
+  - Visitors can leave notes (optionally anonymous)
+  - Messages stored in Firestore, sorted newest-first
+- **Footer**
+  - “Back to top” control wired to Lenis
+  - Links to GitHub, LinkedIn, and the legacy site
 
 ---
 
 ## Requirements
 
-- **Node.js:** `>=20` (recommended LTS 20 or 22)
+- **Node.js:** `>= 20` (LTS 20 or 22 recommended)
 - **Package manager:** `npm`
 
 ---
@@ -41,8 +69,9 @@ Built with modern React, motion-heavy UI, and a small 3D layer.
 Clone the repo and install dependencies:
 
 ```bash
-git clone https://github.com/aaronchenghs/aaroncheng_v2.git aaroncheng_v2
+git clone https://github.com/aaronchenghs/aaroncheng_v2.git
 cd aaroncheng_v2
 
 npm install
+npm run dev
 ```

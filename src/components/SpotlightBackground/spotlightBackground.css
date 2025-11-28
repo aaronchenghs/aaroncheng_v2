@@ -1,0 +1,60 @@
+.spotlight-bg {
+  background-color: rgb(var(--black-rgb));
+  background-image:
+    radial-gradient(circle at 0% 0%, rgba(var(--emerald-500-rgb), 0.1) 0, transparent 55%),
+    radial-gradient(circle at 100% 100%, rgba(var(--emerald-500-rgb), 0.07) 0, transparent 50%),
+    radial-gradient(circle at 50% 120%, rgba(var(--emerald-500-rgb), 0.05) 0, transparent 70%);
+  opacity: 1;
+  filter: blur(1.5px);
+  animation: spotlight-pan 25s ease-in-out infinite alternate;
+  will-change: background-position, opacity, transform;
+}
+
+@keyframes spotlight-pan {
+  0% {
+    background-position:
+      0% 0%,
+      100% 100%,
+      50% 120%;
+    opacity: 0.65;
+    transform: scale(1);
+  }
+  25% {
+    background-position:
+      -20% 10%,
+      110% 90%,
+      55% 105%;
+    opacity: 0.85;
+    transform: scale(1.04);
+  }
+  50% {
+    background-position:
+      15% 25%,
+      85% 80%,
+      45% 115%;
+    opacity: 0.9;
+    transform: scale(1.06);
+  }
+  75% {
+    background-position:
+      -10% 15%,
+      105% 95%,
+      60% 110%;
+    opacity: 0.8;
+    transform: scale(1.03);
+  }
+  100% {
+    background-position:
+      -25% 5%,
+      120% 85%,
+      40% 125%;
+    opacity: 0.7;
+    transform: scale(1.01);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spotlight-bg {
+    animation: none;
+  }
+}

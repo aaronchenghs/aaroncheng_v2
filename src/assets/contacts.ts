@@ -11,14 +11,14 @@ export const CONTACT_INFOS = [
     path: 'https://img.icons8.com/?size=100&id=J6pBf3G6DZGM&format=png&color=000000',
     description:
       "This is my phone, it's always with me. Shoot me a message for a response within an hour",
-    tag: '+1(225)-964-4030',
+    tag: '+1-(225)-964-4030',
     link: 'sms:+12259644030&body=Hi%20it%E2%80%99s%20Aaron',
   },
   {
     name: 'WhatsApp',
     path: 'https://img.icons8.com/?size=100&id=16713&format=png&color=000000',
     description: 'You can also reach me on WhatsApp!',
-    tag: '+1(225)-964-4030',
+    tag: '+1-(225)-964-4030',
     link: 'https://wa.me/12259644030',
   },
   {
