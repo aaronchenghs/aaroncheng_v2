@@ -16,8 +16,9 @@ export function Layout({ children }: LayoutProps) {
     <ReactLenis
       root
       options={{
-        lerp: 0.15,
-        smoothWheel: true,
+        lerp: 0.12,
+        smoothWheel: false,
+        syncTouch: true,
       }}
     >
       <div className={styles.root}>
