@@ -19,7 +19,7 @@ export function Layout({ children }: LayoutProps) {
       root
       options={{
         lerp: 0.12,
-        smoothWheel: false,
+        smoothWheel: true,
         syncTouch: true,
       }}
     >
