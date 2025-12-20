@@ -9,7 +9,10 @@ const styles = {
     'rounded-2xl border border-white/10 bg-neutral-900/70 p-5 ' +
     'transition hover:border-emerald-400',
   iconWrapper:
-    'flex h-10 w-10 items-center justify-center rounded-full bg-neutral-800/80 flex-shrink-0 ' +
+    'flex h-10 w-10 items-center justify-center rounded-full ' +
+    'bg-neutral-800/80 flex-shrink-0 ' +
+    'border border-white/10 ' +
+    'transition hover:border-emerald-400 ' +
     'md:absolute md:left-5 md:top-1/2 md:-translate-y-1/2',
   iconImg: 'h-6 w-6 object-contain',
   content: 'flex-1 text-left md:text-center md:px-14',
@@ -32,7 +35,6 @@ export function ContactSection() {
             <a href={method.link} className={styles.iconWrapper} target="_blank" rel="noreferrer">
               <img src={method.path} alt={method.name} className={styles.iconImg} />
             </a>
-
             <div className={styles.content}>
               <div className={styles.title}>{method.name}</div>
               <p className={styles.desc}>{method.description}</p>

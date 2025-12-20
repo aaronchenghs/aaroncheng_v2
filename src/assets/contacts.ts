@@ -1,3 +1,5 @@
+import StravaLogo from '/strava.png';
+
 export const CONTACT_INFOS = [
   {
     name: 'Email',
@@ -34,5 +36,12 @@ export const CONTACT_INFOS = [
     description: 'See what im working on in the GitHub',
     tag: 'aaronchenghs',
     link: 'https://github.com/aaronchenghs',
+  },
+  {
+    name: 'Strava',
+    path: StravaLogo,
+    description: "I like to run, you like to run, let's run together!",
+    tag: 'Strava Profile',
+    link: 'https://www.strava.com/athletes/140374301',
   },
 ];

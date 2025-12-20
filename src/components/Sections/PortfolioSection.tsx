@@ -59,7 +59,6 @@ export function PortfolioSection() {
             <Certification key={cert.alt} {...cert} />
           ))}
         </div>
-
         <div className={styles.grid}>
           {PORTFOLIO_PROJECTS.map((project) => (
             <Project
