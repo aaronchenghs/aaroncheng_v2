@@ -18,8 +18,9 @@ export function Layout({ children }: LayoutProps) {
     <ReactLenis
       root
       options={{
-        lerp: 0.15,
+        lerp: 0.12,
         smoothWheel: true,
+        syncTouch: true,
       }}
     >
       <SpotlightBackground />
