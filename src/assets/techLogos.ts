@@ -21,6 +21,7 @@ export const techLogos = {
   PANDAS: 'https://upload.wikimedia.org/wikipedia/commons/2/22/Pandas_mark.svg',
   NEXT: 'https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg',
   TAILWIND: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg',
+  EXPRESS: 'https://www.vectorlogo.zone/logos/expressjs/expressjs-icon.svg',
 } as const;
 
 export type TechKey = keyof typeof techLogos;

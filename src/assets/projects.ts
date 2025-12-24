@@ -1,4 +1,5 @@
 import type { TechKey } from './techLogos';
+import TiersLogo from '../assets/images/Tiers.png';
 
 export const PORTFOLIO_PROJECTS: {
   name: string;
@@ -7,6 +8,13 @@ export const PORTFOLIO_PROJECTS: {
   image: string;
   techs: TechKey[];
 }[] = [
+  {
+    name: 'Coming Soon...',
+    href: 'https://docs.google.com/document/d/1EIGAA2NSFYOgf-jXEoqmu9Y3T0KQV1la/edit?usp=sharing&ouid=107228722426048437326&rtpof=true&sd=true',
+    description: 'Click to take a look at the MVP document for what I`m currently working on.',
+    image: TiersLogo,
+    techs: ['TS', 'REACT', 'SASS', 'NODE', 'EXPRESS', 'FIGMA'],
+  },
   {
     name: 'Elapsed',
     href: 'https://github.com/pfranz1/swim_timer',
@@ -51,7 +59,7 @@ export const PORTFOLIO_PROJECTS: {
       'A web-hosted RPG metaverse game on the Decentraland platform. I worked remotely as a front-end developer, ' +
       'building 2D interfaces in TypeScript with the Decentraland SDK. The project received a quarter-million community grant.',
     image: 'https://i.ibb.co/nscswNs/Thumb6.jpg',
-    techs: ['TS', 'NODE'],
+    techs: ['TS', 'NODE', 'PYTHON', 'FLASK'],
   },
   {
     name: 'Akon',
