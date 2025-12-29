@@ -13,7 +13,7 @@ export const PORTFOLIO_PROJECTS: {
     href: 'https://docs.google.com/document/d/1EIGAA2NSFYOgf-jXEoqmu9Y3T0KQV1la/edit?usp=sharing&ouid=107228722426048437326&rtpof=true&sd=true',
     description: 'Click to take a look at the MVP document for what I`m currently working on.',
     image: TiersLogo,
-    techs: ['TS', 'REACT', 'SASS', 'NODE', 'EXPRESS', 'FIGMA'],
+    techs: ['TS', 'REACT', 'SASS', 'NODE', 'EXPRESS', 'SOCKETIO', 'AWS', 'FIGMA'],
   },
   {
     name: 'Elapsed',
