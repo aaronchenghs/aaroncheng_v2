@@ -12,11 +12,10 @@ const styles = {
     'absolute -left-[9px] mt-1 h-4 w-4 rounded-full border-2 border-emerald-400 bg-neutral-950 ' +
     'shadow-[0_0_0_4px_rgba(16,185,129,0.25)] transition-transform transition-shadow duration-200 ' +
     'group-hover:scale-110 group-hover:shadow-[0_0_0_6px_rgba(16,185,129,0.35)]',
-  headerRow: 'flex flex-wrap items-center gap-2',
+  headerRow: 'flex flex-wrap items-center gap-2 pl-2',
   period:
-    'text-[0.7rem] pl-4 font-mono uppercase tracking-[0.15em] text-neutral-400 ' +
-    'bg-neutral-900/70 px-2 py-1 rounded-full transition-colors duration-200 ' +
-    'group-hover:text-neutral-200 group-hover:bg-neutral-800/80',
+    'text-[0.7rem] font-mono uppercase tracking-[0.15em] text-neutral-400 ' +
+    'transition-colors duration-200 group-hover:text-neutral-200',
   typeBadgeBase:
     'text-[0.65rem] uppercase tracking-[0.16em] rounded-full px-2 py-[2px] border ' +
     'transition-colors duration-200',
@@ -58,11 +57,11 @@ export function TimelineSection() {
               <div className={styles.bullet} />
               <div>
                 <div className={styles.headerRow}>
-                  <span className={styles.period}>{item.period}</span>
-
                   <span className={`${styles.typeBadgeBase} ${styles.typeBadgeByType[item.type]}`}>
                     {item.type}
                   </span>
+
+                  <span className={styles.period}>{item.period}</span>
 
                   {item.icon && (
                     <span className={styles.iconWrapper}>
