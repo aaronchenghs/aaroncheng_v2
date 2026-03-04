@@ -30,20 +30,34 @@ export function ContactSection() {
       kicker="Questions, collaborations or just a say hi!"
     >
       <ul className={styles.list}>
-        {CONTACT_INFOS.map((method) => (
-          <li key={method.name} className={styles.item}>
-            <a href={method.link} className={styles.iconWrapper} target="_blank" rel="noreferrer">
-              <img src={method.path} alt={method.name} className={styles.iconImg} />
-            </a>
-            <div className={styles.content}>
-              <div className={styles.title}>{method.name}</div>
-              <p className={styles.desc}>{method.description}</p>
-              <a href={method.link} className={styles.link} target="_blank" rel="noreferrer">
-                {method.tag}
+        {CONTACT_INFOS.map((method) => {
+          const opensInNewTab = method.link.startsWith('http');
+
+          return (
+            <li key={method.name} className={styles.item}>
+              <a
+                href={method.link}
+                className={styles.iconWrapper}
+                target={opensInNewTab ? '_blank' : undefined}
+                rel={opensInNewTab ? 'noreferrer' : undefined}
+              >
+                <img src={method.path} alt={method.name} className={styles.iconImg} />
               </a>
-            </div>
-          </li>
-        ))}
+              <div className={styles.content}>
+                <div className={styles.title}>{method.name}</div>
+                <p className={styles.desc}>{method.description}</p>
+                <a
+                  href={method.link}
+                  className={styles.link}
+                  target={opensInNewTab ? '_blank' : undefined}
+                  rel={opensInNewTab ? 'noreferrer' : undefined}
+                >
+                  {method.tag}
+                </a>
+              </div>
+            </li>
+          );
+        })}
       </ul>
     </Section>
   );

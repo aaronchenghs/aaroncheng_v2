@@ -1,8 +1,8 @@
-import { Section } from './Section';
 import Portrait from '../../assets/images/Portrait_Pro.png';
 import Portrait2 from '../../assets/images/Portrait_2.png';
 import { SECTION_SELECTORS } from '../../lib/sectionSelectors';
 import { LoadableImage } from '../Common/LoadableImage';
+import { Section } from './Section';
 
 const styles = {
   wrapper: 'flex flex-col gap-8 md:flex-row md:items-center',
@@ -20,41 +20,35 @@ export function AboutSection() {
       id={SECTION_SELECTORS.ABOUT}
       label="About"
       title="Aaron Cheng"
-      kicker="Software developer, LSU grad, builder"
+      titleAs="h1"
+      kicker="Software Engineer | TypeScript, React, Node.js, Python, AWS"
     >
       <div className={styles.wrapper}>
-
         <div className={styles.imageWrapper}>
-          <LoadableImage
-            src={Portrait}
-            alt="Portrait of Aaron Cheng"
-            className={styles.image}
-          />
+          <LoadableImage src={Portrait} alt="Portrait of Aaron Cheng" className={styles.image} />
         </div>
 
         <div className={styles.text}>
           <p>
-            I’m a software engineer from Louisiana, constantly looking forward to new opportunities.
-            I currently work with web development stacks and Python, focused on shippability and
-            interactive experiences. Outside of work, I tinker with my own small software projects,
-            enjoy staying active, hang out with my pup Luna, and look for connections with the
-            people around me.
+            I&apos;m Aaron Cheng, a Baton Rouge, Louisiana software engineer and LSU Computer
+            Science graduate. I build full-stack and front-end applications with a focus on reliable
+            delivery, performance, and clean user experiences.
           </p>
           <p className="mt-4">
-            This site is a compact display of my professional life as well as a home for some of the
-            software that I've built. Take a look around—you’ll find certs, apps, and maybe some fun
-            surprises. Don't forget to leave a message on my board!
+            I currently work as a Software Engineer at Applied Research Associates and enjoy
+            building products that move from concept to shipped software. This portfolio is my hub
+            for experience, certifications, and project work.
+          </p>
+          <p className="mt-4">
+            Outside of work, I build side projects, stay active, play retro games, and spend time
+            with my pup Luna, and look for good people to build with. Take a look around.
+            You&apos;ll find certs, apps, and a direct way to reach me.
           </p>
         </div>
 
         <div className={styles.imageWrapper}>
-          <LoadableImage
-            src={Portrait2}
-            alt="Portrait of Aaron Cheng 2"
-            className={styles.image}
-          />
+          <LoadableImage src={Portrait2} alt="Portrait of Aaron Cheng 2" className={styles.image} />
         </div>
-
       </div>
     </Section>
   );

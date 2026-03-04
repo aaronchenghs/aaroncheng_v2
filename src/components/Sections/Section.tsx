@@ -17,12 +17,14 @@ type SectionProps = {
   id: string;
   label?: string;
   title: string;
+  titleAs?: 'h1' | 'h2';
   kicker?: string;
   children: ReactNode;
 };
 
-export function Section({ id, label, title, kicker, children }: SectionProps) {
+export function Section({ id, label, title, titleAs = 'h2', kicker, children }: SectionProps) {
   const reduceMotion = useReducedMotion();
+  const TitleTag = titleAs;
 
   const motionProps = reduceMotion
     ? {}
@@ -42,7 +44,7 @@ export function Section({ id, label, title, kicker, children }: SectionProps) {
       <div className={styles.inner}>
         <header className={styles.header}>
           {label && <span className={styles.label}>{label}</span>}
-          <h2 className={styles.title}>{title}</h2>
+          <TitleTag className={styles.title}>{title}</TitleTag>
           {kicker && <p className={styles.kicker}>{kicker}</p>}
         </header>
 

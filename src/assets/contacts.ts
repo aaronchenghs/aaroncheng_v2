@@ -6,7 +6,7 @@ export const CONTACT_INFOS = [
     path: 'https://img.icons8.com/?size=100&id=qyRpAggnV0zH&format=png&color=000000',
     description: "I'm always checking my e-mails, shoot me a message for a response within a day",
     tag: 'Daily Mail: aaronchengj@gmail.com',
-    link: 'https://mail.google.com/mail/u/0/#inbox',
+    link: 'mailto:aaronchengj@gmail.com',
   },
   {
     name: 'Phone',
@@ -14,7 +14,7 @@ export const CONTACT_INFOS = [
     description:
       "This is my phone, it's always with me. Shoot me a message for a response within an hour",
     tag: '+1-(225)-964-4030',
-    link: 'sms:+12259644030&body=Hi%20it%E2%80%99s%20Aaron',
+    link: 'tel:+12259644030',
   },
   {
     name: 'WhatsApp',
