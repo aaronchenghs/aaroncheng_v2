@@ -27,3 +27,30 @@ export const techLogos = {
 } as const;
 
 export type TechKey = keyof typeof techLogos;
+
+export const techLabels: Record<TechKey, string> = {
+  JS: 'JavaScript',
+  TS: 'TypeScript',
+  NODE: 'Node.js',
+  HTML5: 'HTML5',
+  SASS: 'Sass',
+  PYTHON: 'Python',
+  REACT: 'React',
+  REDUX: 'Redux',
+  FIREBASE: 'Firebase',
+  MUI: 'Material UI',
+  DART: 'Dart',
+  FLUTTER: 'Flutter',
+  FIGMA: 'Figma',
+  JAVA: 'Java',
+  KOTLIN: 'Kotlin',
+  ANDROID: 'Android',
+  DISCORD: 'Discord',
+  FLASK: 'Flask',
+  PANDAS: 'Pandas',
+  NEXT: 'Next.js',
+  TAILWIND: 'Tailwind CSS',
+  EXPRESS: 'Express',
+  SOCKETIO: 'Socket.IO',
+  AWS: 'AWS',
+};

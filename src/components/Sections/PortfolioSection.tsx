@@ -1,7 +1,8 @@
 import { PORTFOLIO_CERTIFICATIONS, type PortfolioCert } from '../../assets/certifications';
 import { PORTFOLIO_PROJECTS, type PortfolioProject } from '../../assets/projects';
-import { techLogos } from '../../assets/techLogos';
+import { techLabels, techLogos } from '../../assets/techLogos';
 import { cn } from '../../lib/cn';
+import { Tooltip } from '../Common/Tooltip';
 import { SECTION_SELECTORS } from '../../lib/sectionSelectors';
 import { LoadableImage } from '../Common/LoadableImage';
 import { Section } from './Section';
@@ -129,9 +130,11 @@ function Project({ name, href, description, image, techs, featured }: PortfolioP
       <div className={styles.stackRow}>
         <div className={styles.stackIcons}>
           {techs.map((key) => (
-            <span key={`${name}-${key}`} className={styles.stackIconWrapper}>
-              <img src={techLogos[key]} alt={key} className={styles.stackIcon} />
-            </span>
+            <Tooltip key={`${name}-${key}`} content={techLabels[key]}>
+              <span className={styles.stackIconWrapper}>
+                <img src={techLogos[key]} alt={techLabels[key]} className={styles.stackIcon} />
+              </span>
+            </Tooltip>
           ))}
         </div>
       </div>
