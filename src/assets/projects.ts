@@ -1,5 +1,5 @@
 import type { TechKey } from './techLogos';
-import TiersLogo from '../assets/images/Tiers.png';
+import TiersLogo from '../assets/images/TWF_Transparent.svg';
 
 export const PORTFOLIO_PROJECTS: {
   name: string;
@@ -7,13 +7,17 @@ export const PORTFOLIO_PROJECTS: {
   description: string;
   image: string;
   techs: TechKey[];
+  featured?: boolean;
 }[] = [
   {
-    name: 'Coming Soon...',
-    href: 'https://docs.google.com/document/d/1EIGAA2NSFYOgf-jXEoqmu9Y3T0KQV1la/edit?usp=sharing&ouid=107228722426048437326&rtpof=true&sd=true',
-    description: 'Click to take a look at the MVP document for what I`m currently working on.',
+    name: 'Tiers! With Friends',
+    href: 'https://www.tierswithfriends.com',
+    description:
+      'My latest side project: a real-time browser party game where friends build hilarious tier lists together, ' +
+      'vote live, and react to the final board in the same room. The full codebase for it can be found on my GitHub.',
     image: TiersLogo,
-    techs: ['TS', 'REACT', 'SASS', 'NODE', 'EXPRESS', 'SOCKETIO', 'AWS', 'FIGMA'],
+    techs: ['TS', 'REACT', 'SASS', 'NODE', 'EXPRESS', 'SOCKETIO', 'AWS'],
+    featured: true,
   },
   {
     name: 'Elapsed',
