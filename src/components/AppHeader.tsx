@@ -21,14 +21,14 @@ export function AppHeader() {
   const lenis = useLenis();
   const [kaomojiIndex, setKaomojiIndex] = useState(0);
 
-  const scrollToSection = (selector: string) => (event: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleSectionScroll = (selector: string) => (event: React.MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
-    lenis?.scrollTo(selector, { duration: 1 });
+    lenis?.scrollTo(selector, { duration: 0.85 });
   };
 
   const handleKaomojiIncrement = () => {
     setKaomojiIndex((prev) => (prev + 1) % HEADER_KAOMOJIS.length);
-    lenis?.scrollTo(0, { duration: 1.5 });
+    lenis?.scrollTo(0, { duration: 1.1 });
   };
 
   return (
@@ -43,28 +43,28 @@ export function AppHeader() {
           <a
             href={`#${SECTION_SELECTORS.TIMELINE}`}
             className={styles.navLink}
-            onClick={scrollToSection(`#${SECTION_SELECTORS.TIMELINE}`)}
+            onClick={handleSectionScroll(`#${SECTION_SELECTORS.TIMELINE}`)}
           >
             Timeline
           </a>
           <a
             href={`#${SECTION_SELECTORS.PORTFOLIO}`}
             className={styles.navLink}
-            onClick={scrollToSection(`#${SECTION_SELECTORS.PORTFOLIO}`)}
+            onClick={handleSectionScroll(`#${SECTION_SELECTORS.PORTFOLIO}`)}
           >
             Portfolio
           </a>
           <a
             href={`#${SECTION_SELECTORS.CONTACT}`}
             className={styles.navLink}
-            onClick={scrollToSection(`#${SECTION_SELECTORS.CONTACT}`)}
+            onClick={handleSectionScroll(`#${SECTION_SELECTORS.CONTACT}`)}
           >
             Contact
           </a>
           <a
             href={`#${SECTION_SELECTORS.MESSAGE_BOARD}`}
             className={styles.navLink}
-            onClick={scrollToSection(`#${SECTION_SELECTORS.MESSAGE_BOARD}`)}
+            onClick={handleSectionScroll(`#${SECTION_SELECTORS.MESSAGE_BOARD}`)}
           >
             Message Board
           </a>

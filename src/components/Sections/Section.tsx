@@ -1,8 +1,7 @@
-import type { ReactNode } from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+import type { CSSProperties, ReactNode } from 'react';
 
 const styles = {
-  root: 'scroll-mt-24 py-16 border-b border-white/5 last:border-b-0', // you already had similar
+  root: 'scroll-mt-24 py-16 border-b border-white/5 last:border-b-0',
   inner: 'space-y-8',
   header: 'flex flex-col items-center justify-center space-y-3',
   label:
@@ -12,6 +11,11 @@ const styles = {
   kicker: 'text-sm text-neutral-400 max-w-xl text-center',
   body: 'text-sm md:text-[0.95rem] leading-relaxed text-neutral-300',
 } as const;
+
+const sectionStyle: CSSProperties = {
+  contentVisibility: 'auto',
+  containIntrinsicSize: '1px 900px',
+};
 
 type SectionProps = {
   id: string;
@@ -23,24 +27,10 @@ type SectionProps = {
 };
 
 export function Section({ id, label, title, titleAs = 'h2', kicker, children }: SectionProps) {
-  const reduceMotion = useReducedMotion();
   const TitleTag = titleAs;
 
-  const motionProps = reduceMotion
-    ? {}
-    : {
-        initial: { opacity: 0, y: 16 },
-        whileInView: { opacity: 1, y: 0 },
-        viewport: {
-          once: true,
-          amount: 0.1,
-          margin: '-10% 0px 0px 0px',
-        },
-        transition: { duration: 0.8 },
-      };
-
   return (
-    <motion.section id={id} className={styles.root} {...motionProps}>
+    <section id={id} className={styles.root} style={sectionStyle}>
       <div className={styles.inner}>
         <header className={styles.header}>
           {label && <span className={styles.label}>{label}</span>}
@@ -50,6 +40,6 @@ export function Section({ id, label, title, titleAs = 'h2', kicker, children }: 
 
         <div className={styles.body}>{children}</div>
       </div>
-    </motion.section>
+    </section>
   );
 }

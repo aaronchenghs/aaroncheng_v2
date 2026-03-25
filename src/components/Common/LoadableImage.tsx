@@ -7,10 +7,8 @@ type LazyImageProps = {
 };
 
 const styles = {
-  root: 'relative h-full w-full',
-  spinnerWrapper: 'absolute inset-0 flex items-center justify-center',
-  spinner:
-    'h-8 w-8 rounded-full border-2 border-neutral-700 border-t-emerald-400 animate-spin',
+  root: 'relative h-full w-full overflow-hidden bg-neutral-900/50',
+  placeholder: 'absolute inset-0 bg-neutral-900/70',
   imgBase: 'transition-opacity duration-500',
   imgHidden: 'opacity-0',
   imgVisible: 'opacity-100',
@@ -26,11 +24,7 @@ export function LoadableImage({ src, alt, className }: LazyImageProps) {
 
   return (
     <div className={styles.root}>
-      {!loaded && !error && (
-        <div className={styles.spinnerWrapper}>
-          <div className={styles.spinner} />
-        </div>
-      )}
+      {!loaded && !error && <div className={styles.placeholder} aria-hidden="true" />}
 
       {!error && (
         <img
@@ -38,6 +32,7 @@ export function LoadableImage({ src, alt, className }: LazyImageProps) {
           alt={alt}
           loading="lazy"
           decoding="async"
+          fetchPriority="low"
           onLoad={() => setLoaded(true)}
           onError={() => setError(true)}
           className={`${styles.imgBase} ${imgOpacityClass}${
