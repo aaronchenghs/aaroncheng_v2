@@ -1,4 +1,5 @@
 import { TIMELINE_ENTRIES } from '../../assets/timelineEntries';
+import { cn } from '../../lib/cn';
 import { SECTION_SELECTORS } from '../../lib/sectionSelectors';
 import { Section } from './Section';
 
@@ -57,7 +58,7 @@ export function TimelineSection() {
               <div className={styles.bullet} />
               <div>
                 <div className={styles.headerRow}>
-                  <span className={`${styles.typeBadgeBase} ${styles.typeBadgeByType[item.type]}`}>
+                  <span className={cn(styles.typeBadgeBase, styles.typeBadgeByType[item.type])}>
                     {item.type}
                   </span>
 

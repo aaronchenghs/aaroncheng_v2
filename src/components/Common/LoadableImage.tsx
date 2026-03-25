@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { LoadingPlaceholder } from './LoadingPlaceholder';
+import { cn } from '../../lib/cn';
 
 type LazyImageProps = {
   src: string;
@@ -8,7 +10,6 @@ type LazyImageProps = {
 
 const styles = {
   root: 'relative h-full w-full overflow-hidden bg-neutral-900/50',
-  placeholder: 'absolute inset-0 bg-neutral-900/70',
   imgBase: 'transition-opacity duration-500',
   imgHidden: 'opacity-0',
   imgVisible: 'opacity-100',
@@ -24,7 +25,7 @@ export function LoadableImage({ src, alt, className }: LazyImageProps) {
 
   return (
     <div className={styles.root}>
-      {!loaded && !error && <div className={styles.placeholder} aria-hidden="true" />}
+      {!loaded && !error && <LoadingPlaceholder />}
 
       {!error && (
         <img
@@ -35,9 +36,7 @@ export function LoadableImage({ src, alt, className }: LazyImageProps) {
           fetchPriority="low"
           onLoad={() => setLoaded(true)}
           onError={() => setError(true)}
-          className={`${styles.imgBase} ${imgOpacityClass}${
-            className ? ` ${className}` : ''
-          }`}
+          className={cn(styles.imgBase, imgOpacityClass, className)}
         />
       )}
 
