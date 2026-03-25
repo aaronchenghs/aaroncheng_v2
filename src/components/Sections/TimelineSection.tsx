@@ -31,9 +31,9 @@ const styles = {
     'group-hover:scale-110 group-hover:border-emerald-400',
   iconImg: 'h-4 w-4 object-contain',
   title:
-    'mt-2 text-sm font-semibold text-white transition-colors duration-200 ' +
+    'text-sm font-semibold text-white transition-colors duration-200 ' +
     'group-hover:text-emerald-100',
-  orgRow: 'mt-1 flex flex-wrap items-center gap-2 text-[0.8rem] text-neutral-400',
+  orgRow: 'flex flex-wrap items-center gap-2 text-[0.8rem] text-neutral-400',
   org: 'font-medium',
   dot: 'mx-1 text-neutral-600',
   location: 'text-neutral-500',

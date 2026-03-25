@@ -30,9 +30,9 @@ export function AboutSection() {
 
         <div className={styles.text}>
           <p>
-            I&apos;m Aaron Cheng, a Baton Rouge, Louisiana software engineer and LSU Computer
-            Science graduate. I build full-stack and front-end applications with a focus on reliable
-            delivery, performance, and clean user experiences.
+            I'm Aaron Cheng, a Louisiana software engineer and LSU Computer Science graduate. I
+            build full-stack and front-end applications with a focus on maintainability,
+            performance, and clean user experiences.
           </p>
           <p className="mt-4">
             I currently work as a Software Engineer at Applied Research Associates and enjoy
@@ -41,8 +41,8 @@ export function AboutSection() {
           </p>
           <p className="mt-4">
             Outside of work, I build side projects, stay active, play retro games, and spend time
-            with my pup Luna, and look for good people to build with. Take a look around.
-            You&apos;ll find certs, apps, and a direct way to reach me.
+            with my pup Luna, and look for good people to build with. Here you'll find certs, apps,
+            and direct ways to reach me.
           </p>
         </div>
 

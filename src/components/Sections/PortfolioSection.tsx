@@ -39,8 +39,7 @@ const styles = {
   img:
     'h-full w-full object-cover mx-auto transition-transform duration-300 ' +
     'group-hover:scale-105',
-  featuredImg:
-    'h-full w-full object-contain p-4 md:p-5 drop-shadow-[0_0_10px_rgba(56,189,248,0.22)]',
+  featuredImg: 'h-full w-full object-contain p-4 md:p-5',
 
   name: 'mb-1 text-sm md:text-base font-semibold text-white',
   nameLink:
