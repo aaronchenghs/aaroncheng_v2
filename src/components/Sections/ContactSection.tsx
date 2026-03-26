@@ -31,15 +31,15 @@ export function ContactSection() {
     >
       <ul className={styles.list}>
         {CONTACT_INFOS.map((method) => {
-          const opensInNewTab = method.link.startsWith('http');
+          const shouldOpenInNewTab = method.link.startsWith('http');
 
           return (
             <li key={method.name} className={styles.item}>
               <a
                 href={method.link}
                 className={styles.iconWrapper}
-                target={opensInNewTab ? '_blank' : undefined}
-                rel={opensInNewTab ? 'noreferrer' : undefined}
+                target={shouldOpenInNewTab ? '_blank' : undefined}
+                rel={shouldOpenInNewTab ? 'noreferrer' : undefined}
               >
                 <img src={method.path} alt={method.name} className={styles.iconImg} />
               </a>
@@ -49,8 +49,8 @@ export function ContactSection() {
                 <a
                   href={method.link}
                   className={styles.link}
-                  target={opensInNewTab ? '_blank' : undefined}
-                  rel={opensInNewTab ? 'noreferrer' : undefined}
+                  target={shouldOpenInNewTab ? '_blank' : undefined}
+                  rel={shouldOpenInNewTab ? 'noreferrer' : undefined}
                 >
                   {method.tag}
                 </a>
