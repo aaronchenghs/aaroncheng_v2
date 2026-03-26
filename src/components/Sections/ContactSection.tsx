@@ -27,7 +27,7 @@ export function ContactSection() {
       id={SECTION_SELECTORS.CONTACT}
       label="Contact"
       title="Get in Touch"
-      kicker="Questions, collaborations or just a say hi!"
+      kicker="Questions, collaborations or just say hi!"
     >
       <ul className={styles.list}>
         {CONTACT_INFOS.map((method) => {
