@@ -1,7 +1,6 @@
 # aaroncheng_v2
 
 Aaron Cheng's personal site.  
-A motion-heavy, portfolio-driven single page built with modern React, Tailwind, and a soft animated “fog” background.
 
 ---
 
@@ -11,7 +10,7 @@ A motion-heavy, portfolio-driven single page built with modern React, Tailwind, 
 - **Build Tool:** Vite
 - **Styling:** Tailwind CSS
 - **Animations / Motion:**
-  - Framer Motion (section reveal, micro-interactions)
+  - Framer Motion (micro-interactions)
   - Lenis (`lenis/react`) for smooth, inertia-based scrolling
 - **Data / Backend:** Firebase (Auth + Firestore) for the message board
 - **Linting / Formatting:** ESLint (flat config) + Prettier
