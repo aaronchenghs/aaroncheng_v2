@@ -10,7 +10,7 @@ const STYLES = {
   left: 'flex flex-col md:flex-row md:items-center md:gap-2',
   brand:
     'font-semibold text-neutral-200 transition-colors hover:text-white cursor-pointer text-left',
-  techNote: 'text-neutral-500',
+  techNote: 'text-neutral-400',
   right: 'flex items-center gap-4',
   legacyLink: 'text-xs font-medium text-emerald-400 hover:text-emerald-300',
   topButton: 'text-xs font-medium text-neutral-300 hover:text-white cursor-pointer',

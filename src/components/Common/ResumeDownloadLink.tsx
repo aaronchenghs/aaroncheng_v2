@@ -15,7 +15,7 @@ const STYLES = {
     'transition group-hover:bg-emerald-200',
   copy: 'flex flex-col gap-0.5',
   label: 'text-xs font-semibold uppercase tracking-[0.14em] text-emerald-100',
-  meta: 'text-[0.68rem] normal-case tracking-normal text-neutral-500',
+  meta: 'text-[0.68rem] normal-case tracking-normal text-neutral-400',
 } as const;
 
 const RESUME_DOWNLOAD_PATH = '/AaronCheng_Resume2026.pdf';

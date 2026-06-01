@@ -25,11 +25,11 @@ const STYLES = {
   label: 'flex flex-col gap-1 text-xs font-medium text-neutral-300',
   input:
     'rounded-xl border border-white/10 bg-neutral-900/70 px-3 py-2 text-sm text-neutral-50 ' +
-    'placeholder:text-neutral-500 outline-none focus:border-emerald-400 ' +
+    'placeholder:text-neutral-400 outline-none focus:border-emerald-400 ' +
     'focus:ring-1 focus:ring-emerald-400',
   textarea:
     'min-h-[120px] rounded-xl border border-white/10 bg-neutral-900/70 px-3 py-2 text-sm ' +
-    'text-neutral-50 placeholder:text-neutral-500 outline-none focus:border-emerald-400 ' +
+    'text-neutral-50 placeholder:text-neutral-400 outline-none focus:border-emerald-400 ' +
     'focus:ring-1 focus:ring-emerald-400',
   submit:
     'inline-flex items-center justify-center rounded-full px-4 py-2 text-xs font-semibold tracking-wide ' +
@@ -39,7 +39,7 @@ const STYLES = {
     'enabled:text-neutral-900 enabled:shadow-[0_0_25px_rgba(34,197,94,0.6)] ' +
     'enabled:hover:shadow-[0_0_40px_rgba(56,189,248,0.9)] enabled:hover:-translate-y-[1px] ' +
     'enabled:active:translate-y-0 enabled:active:scale-[0.98] ' +
-    'disabled:bg-neutral-800 disabled:text-neutral-500 disabled:border disabled:border-neutral-700 ' +
+    'disabled:bg-neutral-800 disabled:text-neutral-400 disabled:border disabled:border-neutral-700 ' +
     'disabled:shadow-inner disabled:shadow-black/40 disabled:cursor-not-allowed disabled:opacity-70',
   listWrapper: 'w-full max-w-4xl space-y-4',
   list: 'mt-6 w-full space-y-3 text-sm text-neutral-200',
@@ -50,8 +50,8 @@ const STYLES = {
     'mb-1 flex items-center justify-between text-[0.7rem] uppercase ' +
     'tracking-wide text-neutral-400',
   name: 'font-semibold',
-  date: 'text-neutral-500',
-  emptyStateText: 'text-xs text-neutral-500',
+  date: 'text-neutral-400',
+  emptyStateText: 'text-xs text-neutral-400',
 } as const;
 
 const MOTION_VARIANTS = {

@@ -13,7 +13,7 @@ const STYLES = {
   imgBase: 'transition-opacity duration-500',
   imgHidden: 'opacity-0',
   imgVisible: 'opacity-100',
-  errorWrapper: 'flex h-full w-full items-center justify-center text-xs text-neutral-500',
+  errorWrapper: 'flex h-full w-full items-center justify-center text-xs text-neutral-400',
 } as const;
 
 export function LoadableImage({ src, alt, className }: LazyImageProps) {

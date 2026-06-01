@@ -37,8 +37,8 @@ const STYLES = {
     'group-hover:text-emerald-100',
   orgRow: 'flex flex-wrap items-center gap-2 text-[0.8rem] text-neutral-400',
   org: 'font-medium',
-  dot: 'mx-1 text-neutral-600',
-  location: 'text-neutral-500',
+  dot: 'mx-1 text-neutral-400',
+  location: 'text-neutral-400',
   description:
     'mt-2 text-xs text-neutral-300 leading-relaxed transition-colors duration-200 ' +
     'group-hover:text-neutral-200',
