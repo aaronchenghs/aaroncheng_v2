@@ -31,13 +31,13 @@ export function Section({ id, label, title, titleAs = 'h2', kicker, children }: 
   const TitleTag = titleAs;
 
   return (
-    <section id={id} className={STYLES.root} style={SECTION_STYLE}>
+    <section id={id} tabIndex={-1} className={STYLES.root} style={SECTION_STYLE}>
       <div className={STYLES.inner}>
-        <header className={STYLES.header}>
+        <div className={STYLES.header}>
           {label && <span className={STYLES.label}>{label}</span>}
           <TitleTag className={STYLES.title}>{title}</TitleTag>
           {kicker && <p className={STYLES.kicker}>{kicker}</p>}
-        </header>
+        </div>
 
         <div className={STYLES.body}>{children}</div>
       </div>

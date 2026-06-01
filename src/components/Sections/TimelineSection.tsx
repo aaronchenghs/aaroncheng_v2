@@ -67,7 +67,7 @@ export function TimelineSection() {
 
                   {item.icon && (
                     <span className={STYLES.iconWrapper}>
-                      <img src={item.icon} alt={`${item.org} icon`} className={STYLES.iconImg} />
+                      <img src={item.icon} alt="" className={STYLES.iconImg} />
                     </span>
                   )}
                 </div>

@@ -23,7 +23,7 @@ const STYLES = {
 
 export function Tooltip({ content, children, className, contentClassName }: TooltipProps) {
   return (
-    <span className={cn(STYLES.root, className)} title={content}>
+    <span className={cn(STYLES.root, className)}>
       <span className={STYLES.trigger}>{children}</span>
       <span role="tooltip" className={cn(STYLES.content, contentClassName)}>
         {content}

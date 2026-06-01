@@ -204,6 +204,9 @@ type MessageFormProps = {
   onSubmit: FormEventHandler<HTMLFormElement>;
 };
 
+const NameInputId = 'message-board-name';
+const MessageInputId = 'message-board-message';
+
 function MessageForm({
   name,
   body,
@@ -222,9 +225,12 @@ function MessageForm({
       animate="animate"
       exit="exit"
     >
-      <motion.label className={STYLES.label} variants={MOTION_VARIANTS.field}>
+      <motion.label htmlFor={NameInputId} className={STYLES.label} variants={MOTION_VARIANTS.field}>
         Name
         <input
+          id={NameInputId}
+          name="name"
+          autoComplete="name"
           value={name}
           onChange={(e) => onNameChange(e.target.value)}
           placeholder="Your name"
@@ -232,9 +238,16 @@ function MessageForm({
         />
       </motion.label>
 
-      <motion.label className={STYLES.label} variants={MOTION_VARIANTS.field}>
+      <motion.label
+        htmlFor={MessageInputId}
+        className={STYLES.label}
+        variants={MOTION_VARIANTS.field}
+      >
         Message
         <textarea
+          id={MessageInputId}
+          name="message"
+          autoComplete="off"
           value={body}
           onChange={(e) => onBodyChange(e.target.value)}
           className={STYLES.textarea}

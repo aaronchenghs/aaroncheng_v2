@@ -100,13 +100,7 @@ function Project({ name, href, description, image, techs, isFeatured }: Portfoli
   return (
     <article className={cn(STYLES.card, isFeatured && STYLES.featuredCard)}>
       <div className={cn(STYLES.imgWrapper, isFeatured && STYLES.featuredImgWrapper)}>
-        <a
-          href={href}
-          title={`${name}-image`}
-          target="_blank"
-          rel="noreferrer"
-          className={STYLES.projectImgLink}
-        >
+        <a href={href} target="_blank" rel="noreferrer" className={STYLES.projectImgLink}>
           <LoadableImage
             src={image}
             alt={name}
