@@ -6,6 +6,18 @@ import { Section } from './Section';
 const STYLES = {
   wrapper: 'relative mx-auto w-full max-w-5xl',
   list: 'space-y-8 border-l border-white/10 pl-6',
+  resumeActionWrapper: 'mt-10 flex justify-center',
+  resumeAction:
+    'inline-flex items-center justify-center rounded-full border border-emerald-400/50 ' +
+    'gap-2 bg-neutral-900/80 px-5 py-2 text-xs font-semibold uppercase tracking-[0.16em] ' +
+    'text-emerald-100 shadow-[0_0_24px_rgba(52,211,153,0.45)] transition ' +
+    'hover:-translate-y-[1px] hover:border-emerald-300 hover:bg-emerald-400/10 ' +
+    'hover:text-white hover:shadow-[0_0_38px_rgba(52,211,153,0.75)] ' +
+    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 ' +
+    'focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950',
+  resumeBadge:
+    'rounded-sm bg-emerald-300 px-1.5 py-0.5 text-[0.58rem] font-black leading-none ' +
+    'tracking-normal text-neutral-950 shadow-[0_0_14px_rgba(52,211,153,0.75)]',
   item:
     'relative group rounded-xl -ml-[2px] px-3 py-2 transition ' +
     'hover:bg-neutral-900/60 hover:shadow-lg hover:shadow-black/40',
@@ -43,6 +55,8 @@ const STYLES = {
     'group-hover:text-neutral-200',
 } as const;
 
+const RESUME_DOWNLOAD_PATH = '/AaronCheng_Resume2026.pdf';
+
 export function TimelineSection() {
   return (
     <Section
@@ -77,7 +91,7 @@ export function TimelineSection() {
                   <span className={STYLES.org}>{item.org}</span>
                   {item.location && (
                     <>
-                      <span className={STYLES.dot}>•</span>
+                      <span className={STYLES.dot}>/</span>
                       <span className={STYLES.location}>{item.location}</span>
                     </>
                   )}
@@ -88,6 +102,13 @@ export function TimelineSection() {
             </li>
           ))}
         </ol>
+
+        <div className={STYLES.resumeActionWrapper}>
+          <a href={RESUME_DOWNLOAD_PATH} download className={STYLES.resumeAction}>
+            <span className={STYLES.resumeBadge}>PDF</span>
+            Download Resume
+          </a>
+        </div>
       </div>
     </Section>
   );
