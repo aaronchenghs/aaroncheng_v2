@@ -21,7 +21,7 @@ export function AboutSection() {
       label="About"
       title="Aaron Cheng"
       titleAs="h1"
-      kicker="Software Engineer | TypeScript, React, Node.js, Python, AWS"
+      kicker="Software Engineer | TS, React, Angular, .NET, Node.js, Python, AWS"
     >
       <div className={STYLES.wrapper}>
         <div className={STYLES.imageWrapper}>

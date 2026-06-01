@@ -20,13 +20,12 @@ const STYLES = {
     'text-[0.7rem] font-mono uppercase tracking-[0.15em] text-neutral-400 ' +
     'transition-colors duration-200 group-hover:text-neutral-200',
   typeBadgeBase:
-    'text-[0.65rem] uppercase tracking-[0.16em] rounded-full px-2 py-[2px] border ' +
+    'inline-flex border-l-2 px-2 py-[1px] text-[0.65rem] uppercase tracking-[0.16em] ' +
     'transition-colors duration-200',
   typeBadgeByType: {
-    Education: 'border-indigo-400/60 bg-indigo-500/10 text-indigo-200 group-hover:bg-indigo-500/20',
-    Internship: 'border-amber-400/60 bg-amber-500/10 text-amber-200 group-hover:bg-amber-500/20',
-    Career:
-      'border-emerald-400/60 bg-emerald-500/10 text-emerald-200 group-hover:bg-emerald-500/20',
+    Education: 'border-l-indigo-300/80 text-indigo-200 group-hover:text-indigo-100',
+    Internship: 'border-l-amber-300/80 text-amber-200 group-hover:text-amber-100',
+    Career: 'border-l-emerald-300/80 text-emerald-200 group-hover:text-emerald-100',
   },
   iconWrapper:
     'ml-auto flex h-7 w-7 items-center justify-center rounded-full border border-white/15 ' +

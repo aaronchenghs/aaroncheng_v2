@@ -5,8 +5,9 @@ const STYLES = {
   inner: 'space-y-8',
   header: 'flex flex-col items-center justify-center space-y-3',
   label:
-    'inline-flex items-center rounded-full border border-white/10 bg-black/40 px-3 py-1 ' +
-    'text-[0.65rem] font-medium uppercase tracking-[0.2em] text-neutral-300/80 backdrop-blur',
+    'relative inline-flex items-center pl-5 text-[0.65rem] font-semibold uppercase ' +
+    'tracking-[0.22em] text-emerald-200/90 before:absolute before:left-0 before:top-1/2 ' +
+    'before:h-px before:w-3 before:-translate-y-1/2 before:bg-emerald-300/80',
   title: 'text-2xl md:text-3xl font-semibold tracking-tight text-white',
   kicker: 'text-sm text-neutral-400 max-w-xl text-center',
   body: 'text-sm md:text-[0.95rem] leading-relaxed text-neutral-300',
