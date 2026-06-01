@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { LICENSE_NAME, LICENSE_SCOPE, LICENSE_TEXT } from '../../lib/license';
 
-const styles = {
+const STYLES = {
   dialogBackdrop: 'fixed inset-0 z-50 bg-black/75 backdrop-blur-sm',
   dialogPanel:
     'fixed left-1/2 top-1/2 z-50 flex max-h-[85vh] w-[min(92vw,42rem)] -translate-x-1/2 ' +
@@ -61,7 +61,7 @@ export function LicenseModal({ isOpen, onClose }: LicenseModalProps) {
     <>
       <button
         type="button"
-        className={styles.dialogBackdrop}
+        className={STYLES.dialogBackdrop}
         aria-label="Close license details"
         onClick={onClose}
       />
@@ -70,32 +70,32 @@ export function LicenseModal({ isOpen, onClose }: LicenseModalProps) {
         role="dialog"
         aria-modal="true"
         aria-labelledby="license-dialog-title"
-        className={styles.dialogPanel}
+        className={STYLES.dialogPanel}
         data-lenis-prevent-wheel
         tabIndex={-1}
       >
-        <div className={styles.dialogHeader}>
+        <div className={STYLES.dialogHeader}>
           <div>
-            <h2 id="license-dialog-title" className={styles.dialogTitle}>
+            <h2 id="license-dialog-title" className={STYLES.dialogTitle}>
               {LICENSE_NAME}
             </h2>
             <p className="mt-1 text-xs uppercase tracking-[0.18em] text-emerald-300/80">
               License Details
             </p>
           </div>
-          <button type="button" className={styles.dialogClose} onClick={onClose}>
+          <button type="button" className={STYLES.dialogClose} onClick={onClose}>
             Close
           </button>
         </div>
 
-        <div className={styles.dialogBody}>
-          <div className={styles.dialogList}>
+        <div className={STYLES.dialogBody}>
+          <div className={STYLES.dialogList}>
             {LICENSE_SCOPE.map((item) => (
               <p key={item}>{item}</p>
             ))}
           </div>
 
-          <pre className={styles.dialogCode}>{LICENSE_TEXT}</pre>
+          <pre className={STYLES.dialogCode}>{LICENSE_TEXT}</pre>
         </div>
       </div>
     </>

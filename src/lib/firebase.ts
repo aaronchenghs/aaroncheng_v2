@@ -3,7 +3,7 @@ import { getAuth, signInWithPopup, GoogleAuthProvider, type User } from 'firebas
 import { getFirestore, doc, getDoc, setDoc, collection, query, getDocs } from 'firebase/firestore';
 import { v4 as uuidv4 } from 'uuid';
 
-const firebaseConfig: FirebaseOptions = {
+const FIREBASE_CONFIG: FirebaseOptions = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
   projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
@@ -12,17 +12,17 @@ const firebaseConfig: FirebaseOptions = {
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
-const app = initializeApp(firebaseConfig);
+const APP = initializeApp(FIREBASE_CONFIG);
 
-const provider = new GoogleAuthProvider();
-provider.setCustomParameters({
+const PROVIDER = new GoogleAuthProvider();
+PROVIDER.setCustomParameters({
   prompt: 'select_account',
 });
 
-export const auth = getAuth(app);
-export const db = getFirestore(app);
+export const auth = getAuth(APP);
+export const db = getFirestore(APP);
 
-export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
+export const signInWithGooglePopup = () => signInWithPopup(auth, PROVIDER);
 
 export async function createUserDocumentFromAuth(userAuth: User) {
   const userDocRef = doc(db, 'users', userAuth.uid);
@@ -60,8 +60,8 @@ export function formatFeedbackDate(dateArray: FeedbackDateTuple) {
 }
 
 export async function createFeedbackDocument(
-  FeedbackName: string,
-  FeedbackMessage: string,
+  feedbackName: string,
+  feedbackMessage: string,
 ): Promise<void> {
   const feedbackDocRef = doc(db, 'feedback', uuidv4());
   const dateObj = new Date();
@@ -73,8 +73,8 @@ export async function createFeedbackDocument(
 
   try {
     await setDoc(feedbackDocRef, {
-      FeedbackName,
-      FeedbackMessage,
+      FeedbackName: feedbackName,
+      FeedbackMessage: feedbackMessage,
       date,
     });
   } catch (error) {

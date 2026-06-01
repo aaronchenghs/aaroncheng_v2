@@ -1,6 +1,6 @@
 import type { CSSProperties, ReactNode } from 'react';
 
-const styles = {
+const STYLES = {
   root: 'scroll-mt-24 py-16 border-b border-white/5 last:border-b-0',
   inner: 'space-y-8',
   header: 'flex flex-col items-center justify-center space-y-3',
@@ -12,7 +12,7 @@ const styles = {
   body: 'text-sm md:text-[0.95rem] leading-relaxed text-neutral-300',
 } as const;
 
-const sectionStyle: CSSProperties = {
+const SECTION_STYLE: CSSProperties = {
   contentVisibility: 'auto',
   containIntrinsicSize: '1px 900px',
 };
@@ -30,15 +30,15 @@ export function Section({ id, label, title, titleAs = 'h2', kicker, children }: 
   const TitleTag = titleAs;
 
   return (
-    <section id={id} className={styles.root} style={sectionStyle}>
-      <div className={styles.inner}>
-        <header className={styles.header}>
-          {label && <span className={styles.label}>{label}</span>}
-          <TitleTag className={styles.title}>{title}</TitleTag>
-          {kicker && <p className={styles.kicker}>{kicker}</p>}
+    <section id={id} className={STYLES.root} style={SECTION_STYLE}>
+      <div className={STYLES.inner}>
+        <header className={STYLES.header}>
+          {label && <span className={STYLES.label}>{label}</span>}
+          <TitleTag className={STYLES.title}>{title}</TitleTag>
+          {kicker && <p className={STYLES.kicker}>{kicker}</p>}
         </header>
 
-        <div className={styles.body}>{children}</div>
+        <div className={STYLES.body}>{children}</div>
       </div>
     </section>
   );

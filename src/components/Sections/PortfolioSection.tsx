@@ -1,13 +1,13 @@
 import { PORTFOLIO_CERTIFICATIONS, type PortfolioCert } from '../../assets/certifications';
 import { PORTFOLIO_PROJECTS, type PortfolioProject } from '../../assets/projects';
-import { techLabels, techLogos } from '../../assets/techLogos';
+import { TECH_LABELS, TECH_LOGOS } from '../../assets/techLogos';
 import { cn } from '../../lib/cn';
 import { Tooltip } from '../Common/Tooltip';
 import { SECTION_SELECTORS } from '../../lib/sectionSelectors';
 import { LoadableImage } from '../Common/LoadableImage';
 import { Section } from './Section';
 
-const styles = {
+const STYLES = {
   sectionDivider: 'flex flex-col gap-10 items-center justify-center',
   certsWrapper: 'flex flex-wrap justify-center gap-6 w-full max-w-4xl',
   certCard:
@@ -62,13 +62,13 @@ export function PortfolioSection() {
       title="Projects & Certifications"
       kicker="A sampling of what I’ve built"
     >
-      <div className={styles.sectionDivider}>
-        <div className={styles.certsWrapper}>
+      <div className={STYLES.sectionDivider}>
+        <div className={STYLES.certsWrapper}>
           {PORTFOLIO_CERTIFICATIONS.map((cert: PortfolioCert) => (
             <Certification key={cert.alt} {...cert} />
           ))}
         </div>
-        <div className={styles.grid}>
+        <div className={STYLES.grid}>
           {PORTFOLIO_PROJECTS.map((project) => (
             <Project
               key={project.name}
@@ -77,7 +77,7 @@ export function PortfolioSection() {
               description={project.description}
               image={project.image}
               techs={project.techs}
-              featured={project.featured}
+              isFeatured={project.isFeatured}
             />
           ))}
         </div>
@@ -88,57 +88,57 @@ export function PortfolioSection() {
 
 function Certification({ alt, url, src, issued }: PortfolioCert) {
   return (
-    <a href={url} target="_blank" rel="noreferrer" className={styles.certCard}>
-      <img src={src} alt={alt} className={styles.certImg} />
-      <span className={styles.certText}>{alt}</span>
-      <span className={styles.certText}>Issued {issued}</span>
+    <a href={url} target="_blank" rel="noreferrer" className={STYLES.certCard}>
+      <img src={src} alt={alt} className={STYLES.certImg} />
+      <span className={STYLES.certText}>{alt}</span>
+      <span className={STYLES.certText}>Issued {issued}</span>
     </a>
   );
 }
 
-function Project({ name, href, description, image, techs, featured }: PortfolioProject) {
+function Project({ name, href, description, image, techs, isFeatured }: PortfolioProject) {
   return (
-    <article className={cn(styles.card, featured && styles.featuredCard)}>
-      <div className={cn(styles.imgWrapper, featured && styles.featuredImgWrapper)}>
+    <article className={cn(STYLES.card, isFeatured && STYLES.featuredCard)}>
+      <div className={cn(STYLES.imgWrapper, isFeatured && STYLES.featuredImgWrapper)}>
         <a
           href={href}
           title={`${name}-image`}
           target="_blank"
           rel="noreferrer"
-          className={styles.projectImgLink}
+          className={STYLES.projectImgLink}
         >
           <LoadableImage
             src={image}
             alt={name}
-            className={cn(styles.img, featured && styles.featuredImg)}
+            className={cn(STYLES.img, isFeatured && STYLES.featuredImg)}
           />
         </a>
       </div>
 
-      <h3 className={styles.name}>
+      <h3 className={STYLES.name}>
         <a
           href={href}
           target="_blank"
           rel="noreferrer"
-          className={cn(styles.nameLink, featured && styles.featuredNameLink)}
+          className={cn(STYLES.nameLink, isFeatured && STYLES.featuredNameLink)}
         >
           {name}
         </a>
       </h3>
 
-      <div className={styles.stackRow}>
-        <div className={styles.stackIcons}>
+      <div className={STYLES.stackRow}>
+        <div className={STYLES.stackIcons}>
           {techs.map((key) => (
-            <Tooltip key={`${name}-${key}`} content={techLabels[key]}>
-              <span className={styles.stackIconWrapper}>
-                <img src={techLogos[key]} alt={techLabels[key]} className={styles.stackIcon} />
+            <Tooltip key={`${name}-${key}`} content={TECH_LABELS[key]}>
+              <span className={STYLES.stackIconWrapper}>
+                <img src={TECH_LOGOS[key]} alt={TECH_LABELS[key]} className={STYLES.stackIcon} />
               </span>
             </Tooltip>
           ))}
         </div>
       </div>
 
-      <p className={styles.desc}>{description}</p>
+      <p className={STYLES.desc}>{description}</p>
     </article>
   );
 }

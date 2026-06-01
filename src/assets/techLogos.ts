@@ -1,4 +1,4 @@
-export const techLogos = {
+export const TECH_LOGOS = {
   JS: 'https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg',
   TS: 'https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg',
   NODE: 'https://www.vectorlogo.zone/logos/nodejs/nodejs-icon.svg',
@@ -26,9 +26,9 @@ export const techLogos = {
   AWS: 'https://upload.wikimedia.org/wikipedia/commons/f/fc/Amazon_Web_Services_2025.svg',
 } as const;
 
-export type TechKey = keyof typeof techLogos;
+export type TechKey = keyof typeof TECH_LOGOS;
 
-export const techLabels: Record<TechKey, string> = {
+export const TECH_LABELS: Record<TechKey, string> = {
   JS: 'JavaScript',
   TS: 'TypeScript',
   NODE: 'Node.js',

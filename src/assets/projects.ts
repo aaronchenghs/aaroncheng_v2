@@ -7,7 +7,7 @@ export const PORTFOLIO_PROJECTS: {
   description: string;
   image: string;
   techs: TechKey[];
-  featured?: boolean;
+  isFeatured?: boolean;
 }[] = [
   {
     name: 'Tiers! With Friends',
@@ -17,7 +17,7 @@ export const PORTFOLIO_PROJECTS: {
       'vote live, and react to the final board in the same room. The full codebase for it can be found on my GitHub.',
     image: TiersLogo,
     techs: ['TS', 'REACT', 'SASS', 'NODE', 'EXPRESS', 'SOCKETIO', 'AWS'],
-    featured: true,
+    isFeatured: true,
   },
   {
     name: 'Elapsed',

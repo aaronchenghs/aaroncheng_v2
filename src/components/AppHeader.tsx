@@ -3,7 +3,7 @@ import { useLenis } from 'lenis/react';
 import { HEADER_KAOMOJIS } from '../assets/emotes';
 import { SECTION_SELECTORS } from '../lib/sectionSelectors';
 
-const styles = {
+const STYLES = {
   root: 'sticky top-0 z-30 border-b border-white/5 bg-neutral-950/70 backdrop-blur',
   nav:
     'mx-auto flex max-w-8xl flex-col gap-2 px-4 py-3 select-none ' +
@@ -19,12 +19,13 @@ const styles = {
 
 export function AppHeader() {
   const lenis = useLenis();
-  const [kaomojiIndex, setKaomojiIndex] = useState(0);
+  const [kaomojiIndex, setKaomojiIndex] = useState<number>(0);
 
-  const handleSectionScroll = (selector: string) => (event: React.MouseEvent<HTMLAnchorElement>) => {
-    event.preventDefault();
-    lenis?.scrollTo(selector, { duration: 0.85 });
-  };
+  const handleSectionScroll =
+    (selector: string) => (event: React.MouseEvent<HTMLAnchorElement>) => {
+      event.preventDefault();
+      lenis?.scrollTo(selector, { duration: 0.85 });
+    };
 
   const handleKaomojiIncrement = () => {
     setKaomojiIndex((prev) => (prev + 1) % HEADER_KAOMOJIS.length);
@@ -32,38 +33,38 @@ export function AppHeader() {
   };
 
   return (
-    <header className={styles.root}>
-      <nav className={styles.nav}>
-        <div className={styles.brandRow}>
-          <button type="button" onClick={handleKaomojiIncrement} className={styles.brandButton}>
+    <header className={STYLES.root}>
+      <nav className={STYLES.nav}>
+        <div className={STYLES.brandRow}>
+          <button type="button" onClick={handleKaomojiIncrement} className={STYLES.brandButton}>
             Aaron Cheng {HEADER_KAOMOJIS[kaomojiIndex]}
           </button>
         </div>
-        <div className={styles.navContainer}>
+        <div className={STYLES.navContainer}>
           <a
             href={`#${SECTION_SELECTORS.TIMELINE}`}
-            className={styles.navLink}
+            className={STYLES.navLink}
             onClick={handleSectionScroll(`#${SECTION_SELECTORS.TIMELINE}`)}
           >
             Timeline
           </a>
           <a
             href={`#${SECTION_SELECTORS.PORTFOLIO}`}
-            className={styles.navLink}
+            className={STYLES.navLink}
             onClick={handleSectionScroll(`#${SECTION_SELECTORS.PORTFOLIO}`)}
           >
             Portfolio
           </a>
           <a
             href={`#${SECTION_SELECTORS.CONTACT}`}
-            className={styles.navLink}
+            className={STYLES.navLink}
             onClick={handleSectionScroll(`#${SECTION_SELECTORS.CONTACT}`)}
           >
             Contact
           </a>
           <a
             href={`#${SECTION_SELECTORS.MESSAGE_BOARD}`}
-            className={styles.navLink}
+            className={STYLES.navLink}
             onClick={handleSectionScroll(`#${SECTION_SELECTORS.MESSAGE_BOARD}`)}
           >
             Message Board

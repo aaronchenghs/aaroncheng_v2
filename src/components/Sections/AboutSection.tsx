@@ -4,7 +4,7 @@ import { SECTION_SELECTORS } from '../../lib/sectionSelectors';
 import { LoadableImage } from '../Common/LoadableImage';
 import { Section } from './Section';
 
-const styles = {
+const STYLES = {
   wrapper: 'flex flex-col gap-8 md:flex-row md:items-center',
   imageWrapper:
     'relative shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-neutral-900/20 ' +
@@ -23,12 +23,12 @@ export function AboutSection() {
       titleAs="h1"
       kicker="Software Engineer | TypeScript, React, Node.js, Python, AWS"
     >
-      <div className={styles.wrapper}>
-        <div className={styles.imageWrapper}>
-          <LoadableImage src={Portrait} alt="Portrait of Aaron Cheng" className={styles.image} />
+      <div className={STYLES.wrapper}>
+        <div className={STYLES.imageWrapper}>
+          <LoadableImage src={Portrait} alt="Portrait of Aaron Cheng" className={STYLES.image} />
         </div>
 
-        <div className={styles.text}>
+        <div className={STYLES.text}>
           <p>
             I'm Aaron Cheng, a Louisiana software engineer and LSU Computer Science graduate. I
             build full-stack and front-end applications with a focus on maintainability,
@@ -46,8 +46,8 @@ export function AboutSection() {
           </p>
         </div>
 
-        <div className={styles.imageWrapper}>
-          <LoadableImage src={Portrait2} alt="Portrait of Aaron Cheng 2" className={styles.image} />
+        <div className={STYLES.imageWrapper}>
+          <LoadableImage src={Portrait2} alt="Portrait of Aaron Cheng 2" className={STYLES.image} />
         </div>
       </div>
     </Section>

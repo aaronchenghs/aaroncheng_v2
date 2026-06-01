@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import { AboutSection } from './components/Sections/AboutSection';
 import { ContactSection } from './components/Sections/ContactSection';
 import { MessageBoardSection } from './components/Sections/MessageBoardSection';

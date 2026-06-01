@@ -8,43 +8,38 @@ type LazyImageProps = {
   className?: string;
 };
 
-const styles = {
+const STYLES = {
   root: 'relative h-full w-full overflow-hidden bg-neutral-900/50',
   imgBase: 'transition-opacity duration-500',
   imgHidden: 'opacity-0',
   imgVisible: 'opacity-100',
-  errorWrapper:
-    'flex h-full w-full items-center justify-center text-xs text-neutral-500',
+  errorWrapper: 'flex h-full w-full items-center justify-center text-xs text-neutral-500',
 } as const;
 
 export function LoadableImage({ src, alt, className }: LazyImageProps) {
-  const [loaded, setLoaded] = useState(false);
-  const [error, setError] = useState(false);
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
+  const [hasError, setHasError] = useState<boolean>(false);
 
-  const imgOpacityClass = loaded ? styles.imgVisible : styles.imgHidden;
+  const imgOpacityClass = isLoaded ? STYLES.imgVisible : STYLES.imgHidden;
 
   return (
-    <div className={styles.root}>
-      {!loaded && !error && <LoadingPlaceholder />}
+    <div className={STYLES.root}>
+      {!isLoaded && !hasError && <LoadingPlaceholder />}
 
-      {!error && (
+      {!hasError && (
         <img
           src={src}
           alt={alt}
           loading="lazy"
           decoding="async"
           fetchPriority="low"
-          onLoad={() => setLoaded(true)}
-          onError={() => setError(true)}
-          className={cn(styles.imgBase, imgOpacityClass, className)}
+          onLoad={() => setIsLoaded(true)}
+          onError={() => setHasError(true)}
+          className={cn(STYLES.imgBase, imgOpacityClass, className)}
         />
       )}
 
-      {error && (
-        <div className={styles.errorWrapper}>
-          Image failed to load
-        </div>
-      )}
+      {hasError && <div className={STYLES.errorWrapper}>Image failed to load</div>}
     </div>
   );
 }

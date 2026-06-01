@@ -3,7 +3,7 @@ import { cn } from '../../lib/cn';
 import { SECTION_SELECTORS } from '../../lib/sectionSelectors';
 import { Section } from './Section';
 
-const styles = {
+const STYLES = {
   wrapper: 'relative mx-auto w-full max-w-5xl',
   list: 'space-y-8 border-l border-white/10 pl-6',
   item:
@@ -51,39 +51,39 @@ export function TimelineSection() {
       title="My Timeline"
       kicker="What's led me to today"
     >
-      <div className={styles.wrapper}>
-        <ol className={styles.list}>
+      <div className={STYLES.wrapper}>
+        <ol className={STYLES.list}>
           {TIMELINE_ENTRIES.map((item) => (
-            <li key={item.id} className={styles.item}>
-              <div className={styles.bullet} />
+            <li key={item.id} className={STYLES.item}>
+              <div className={STYLES.bullet} />
               <div>
-                <div className={styles.headerRow}>
-                  <span className={cn(styles.typeBadgeBase, styles.typeBadgeByType[item.type])}>
+                <div className={STYLES.headerRow}>
+                  <span className={cn(STYLES.typeBadgeBase, STYLES.typeBadgeByType[item.type])}>
                     {item.type}
                   </span>
 
-                  <span className={styles.period}>{item.period}</span>
+                  <span className={STYLES.period}>{item.period}</span>
 
                   {item.icon && (
-                    <span className={styles.iconWrapper}>
-                      <img src={item.icon} alt={`${item.org} icon`} className={styles.iconImg} />
+                    <span className={STYLES.iconWrapper}>
+                      <img src={item.icon} alt={`${item.org} icon`} className={STYLES.iconImg} />
                     </span>
                   )}
                 </div>
 
-                <h3 className={styles.title}>{item.title}</h3>
+                <h3 className={STYLES.title}>{item.title}</h3>
 
-                <div className={styles.orgRow}>
-                  <span className={styles.org}>{item.org}</span>
+                <div className={STYLES.orgRow}>
+                  <span className={STYLES.org}>{item.org}</span>
                   {item.location && (
                     <>
-                      <span className={styles.dot}>•</span>
-                      <span className={styles.location}>{item.location}</span>
+                      <span className={STYLES.dot}>•</span>
+                      <span className={STYLES.location}>{item.location}</span>
                     </>
                   )}
                 </div>
 
-                <p className={styles.description}>{item.description}</p>
+                <p className={STYLES.description}>{item.description}</p>
               </div>
             </li>
           ))}

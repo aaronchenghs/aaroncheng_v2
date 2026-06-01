@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useLenis } from 'lenis/react';
 import { LicenseModal } from './Common/LicenseModal';
 
-const styles = {
+const STYLES = {
   root: 'border-t border-white/5 bg-neutral-950',
   inner:
     'mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 py-6 ' +
@@ -22,7 +22,7 @@ const styles = {
 
 export function AppFooter() {
   const lenis = useLenis();
-  const [isLicenseOpen, setIsLicenseOpen] = useState(false);
+  const [isLicenseOpen, setIsLicenseOpen] = useState<boolean>(false);
 
   const handleScrollTop = (event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
     event.preventDefault();
@@ -30,33 +30,33 @@ export function AppFooter() {
   };
 
   return (
-    <footer className={styles.root}>
-      <div className={styles.inner}>
-        <div className={styles.left}>
+    <footer className={STYLES.root}>
+      <div className={STYLES.inner}>
+        <div className={STYLES.left}>
           <button
             type="button"
-            className={styles.brand}
+            className={STYLES.brand}
             onClick={() => setIsLicenseOpen(true)}
             aria-haspopup="dialog"
             aria-expanded={isLicenseOpen}
           >
             Copyright {new Date().getFullYear()} Aaron Cheng
           </button>
-          <span className={styles.techNote}>
+          <span className={STYLES.techNote}>
             Built with TS-React, Tailwind, Lenis, and Firebase.
           </span>
         </div>
-        <div className={styles.right}>
+        <div className={STYLES.right}>
           <a
             href="https://aaroncheng-legacy.netlify.app"
             target="_blank"
             rel="noreferrer"
-            className={styles.legacyLink}
+            className={STYLES.legacyLink}
           >
             View legacy site
           </a>
 
-          <button type="button" onClick={handleScrollTop} className={styles.topButton}>
+          <button type="button" onClick={handleScrollTop} className={STYLES.topButton}>
             Back to top
           </button>
 
@@ -64,13 +64,13 @@ export function AppFooter() {
             href="https://www.linkedin.com/in/aaron-cheng-7525a21b7/"
             target="_blank"
             rel="noreferrer"
-            className={styles.iconLink}
+            className={STYLES.iconLink}
             aria-label="Open LinkedIn profile in new tab"
           >
             <img
               src="https://img.icons8.com/?size=100&id=xuvGCOXi8Wyg&format=png&color=ffffff"
               alt="LinkedIn"
-              className={styles.iconImg}
+              className={STYLES.iconImg}
             />
           </a>
 
@@ -78,13 +78,13 @@ export function AppFooter() {
             href="https://github.com/aaronchenghs"
             target="_blank"
             rel="noreferrer"
-            className={styles.iconLink}
+            className={STYLES.iconLink}
             aria-label="Open GitHub profile in new tab"
           >
             <img
               src="https://img.icons8.com/?size=100&id=12599&format=png&color=ffffff"
               alt="GitHub"
-              className={styles.iconImg}
+              className={STYLES.iconImg}
             />
           </a>
         </div>

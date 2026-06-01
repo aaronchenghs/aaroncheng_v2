@@ -4,7 +4,7 @@ import { AppHeader } from './components/AppHeader';
 import { AppFooter } from './components/AppFooter';
 import { SpotlightBackground } from './components/SpotlightBackground/SpotlightBackground';
 
-const styles = {
+const STYLES = {
   root: 'relative min-h-screen text-neutral-50',
   main: 'mx-auto max-w-6xl px-4',
 } as const;
@@ -24,9 +24,9 @@ export function Layout({ children }: LayoutProps) {
       }}
     >
       <SpotlightBackground />
-      <div className={styles.root}>
+      <div className={STYLES.root}>
         <AppHeader />
-        <main className={styles.main}>{children}</main>
+        <main className={STYLES.main}>{children}</main>
         <AppFooter />
       </div>
     </ReactLenis>

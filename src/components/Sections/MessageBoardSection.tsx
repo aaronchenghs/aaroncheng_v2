@@ -12,9 +12,9 @@ import {
   type FeedbackDTO,
 } from '../../lib/firebase';
 import { SECTION_SELECTORS } from '../../lib/sectionSelectors';
-import './styles/messageBoardSection.css';
+import './styles/messageBoardSection.scss';
 
-const styles = {
+const STYLES = {
   container: 'flex flex-col items-center gap-8',
   signInWrapper: 'google-border-animate inline-flex rounded-full p-[1px]',
   signInButton:
@@ -53,229 +53,6 @@ const styles = {
   date: 'text-neutral-500',
   emptyStateText: 'text-xs text-neutral-500',
 } as const;
-
-type MessageBoardState = {
-  user: User | null;
-  messages: FeedbackDTO[];
-  name: string;
-  body: string;
-  isSubmitting: boolean;
-  isLoading: boolean;
-  setName: (value: string) => void;
-  setBody: (value: string) => void;
-  handleSignIn: () => Promise<void>;
-  handleSubmit: FormEventHandler<HTMLFormElement>;
-};
-
-function useMessageBoardState(): MessageBoardState {
-  const [user, setUser] = useState<User | null>(null);
-  const [messages, setMessages] = useState<FeedbackDTO[]>([]);
-  const [name, setName] = useState('');
-  const [body, setBody] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-
-  const handleSignIn = async () => {
-    const result = await signInWithGooglePopup();
-    await createUserDocumentFromAuth(result.user);
-  };
-
-  const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
-    event.preventDefault();
-    if (!body.trim()) return;
-    if (!name.trim() && !user?.displayName) return;
-
-    setIsSubmitting(true);
-    try {
-      const finalName = name.trim() || user?.displayName || 'Anonymous';
-      await createFeedbackDocument(finalName, body.trim());
-      const data = await getFeedbackStream();
-      setMessages(data);
-      setBody('');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  useEffect(() => {
-    const unsub = onAuthStateChanged(auth, (userAuth) => {
-      setUser(userAuth);
-    });
-    return unsub;
-  }, []);
-
-  useEffect(() => {
-    const load = async () => {
-      setIsLoading(true);
-      const data = await getFeedbackStream();
-      setMessages(data);
-      setIsLoading(false);
-    };
-    load();
-  }, []);
-
-  return {
-    user,
-    messages,
-    name,
-    body,
-    isSubmitting,
-    isLoading,
-    setName,
-    setBody,
-    handleSignIn,
-    handleSubmit,
-  };
-}
-
-type SignInPromptProps = {
-  onSignIn: () => Promise<void>;
-};
-
-function SignInPrompt({ onSignIn }: SignInPromptProps) {
-  return (
-    <motion.div
-      key="signin"
-      variants={MOTION_VARIANTS.container}
-      initial="initial"
-      animate="animate"
-      exit="exit"
-      className={styles.signInWrapper}
-    >
-      <motion.button
-        type="button"
-        onClick={onSignIn}
-        className={styles.signInButton}
-        variants={MOTION_VARIANTS.button}
-      >
-        Sign in with Google to post a message
-      </motion.button>
-    </motion.div>
-  );
-}
-
-type MessageFormProps = {
-  name: string;
-  body: string;
-  isSubmitting: boolean;
-  onNameChange: (value: string) => void;
-  onBodyChange: (value: string) => void;
-  onSubmit: FormEventHandler<HTMLFormElement>;
-};
-
-function MessageForm({
-  name,
-  body,
-  isSubmitting,
-  onNameChange,
-  onBodyChange,
-  onSubmit,
-}: MessageFormProps) {
-  return (
-    <motion.form
-      key="form"
-      onSubmit={onSubmit}
-      className={styles.form}
-      variants={MOTION_VARIANTS.container}
-      initial="initial"
-      animate="animate"
-      exit="exit"
-    >
-      <motion.label className={styles.label} variants={MOTION_VARIANTS.field}>
-        Name
-        <input
-          value={name}
-          onChange={(e) => onNameChange(e.target.value)}
-          placeholder="Your name"
-          className={styles.input}
-        />
-      </motion.label>
-
-      <motion.label className={styles.label} variants={MOTION_VARIANTS.field}>
-        Message
-        <textarea
-          value={body}
-          onChange={(e) => onBodyChange(e.target.value)}
-          className={styles.textarea}
-          placeholder="Let me know something!"
-        />
-      </motion.label>
-
-      <motion.button
-        type="submit"
-        className={styles.submit}
-        disabled={isSubmitting || !body.trim()}
-        variants={MOTION_VARIANTS.button}
-      >
-        {isSubmitting ? 'Posting…' : 'Post message'}
-      </motion.button>
-    </motion.form>
-  );
-}
-
-export function MessageBoardSection() {
-  const {
-    user,
-    messages,
-    name,
-    body,
-    isSubmitting,
-    isLoading,
-    setName,
-    setBody,
-    handleSignIn,
-    handleSubmit,
-  } = useMessageBoardState();
-
-  return (
-    <Section
-      id={SECTION_SELECTORS.MESSAGE_BOARD}
-      label="Message Board"
-      title="Leave a Note!"
-      kicker="Sign in with Google to post, and read notes from other visitors!"
-    >
-      <div className={styles.container}>
-        <AnimatePresence mode="wait">
-          {!user ? (
-            <SignInPrompt key="signin-block" onSignIn={handleSignIn} />
-          ) : (
-            <MessageForm
-              key="form-block"
-              name={name}
-              body={body}
-              isSubmitting={isSubmitting}
-              onNameChange={setName}
-              onBodyChange={setBody}
-              onSubmit={handleSubmit}
-            />
-          )}
-        </AnimatePresence>
-
-        <div className={styles.listWrapper}>
-          {(isLoading || messages.length === 0) && (
-            <p className={styles.emptyStateText}>
-              {isLoading ? 'Loading messages…' : 'No messages yet. Be the first.'}
-            </p>
-          )}
-
-          {!isLoading && messages.length > 0 && (
-            <ul className={styles.list}>
-              {messages.map((msg) => (
-                <li key={msg.id} className={styles.item}>
-                  <div className={styles.meta}>
-                    <span className={styles.name}>{msg.name || 'Anonymous'}</span>
-                    <span className={styles.date}>{formatFeedbackDate(msg.date)}</span>
-                  </div>
-                  <p>{msg.message}</p>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-      </div>
-    </Section>
-  );
-}
 
 const MOTION_VARIANTS = {
   container: {
@@ -316,3 +93,227 @@ const MOTION_VARIANTS = {
     },
   },
 } as const;
+
+type MessageBoardState = {
+  user: User | null;
+  messages: FeedbackDTO[];
+  name: string;
+  body: string;
+  isSubmitting: boolean;
+  isLoading: boolean;
+  setName: (value: string) => void;
+  setBody: (value: string) => void;
+  handleSignIn: () => Promise<void>;
+  handleSubmit: FormEventHandler<HTMLFormElement>;
+};
+
+function useMessageBoardState(): MessageBoardState {
+  const [user, setUser] = useState<User | null>(null);
+  const [messages, setMessages] = useState<FeedbackDTO[]>([]);
+  const [name, setName] = useState<string>('');
+  const [body, setBody] = useState<string>('');
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  const handleSignIn = async () => {
+    const result = await signInWithGooglePopup();
+    await createUserDocumentFromAuth(result.user);
+  };
+
+  const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
+    event.preventDefault();
+    if (!body.trim()) return;
+    if (!name.trim() && !user?.displayName) return;
+
+    setIsSubmitting(true);
+    try {
+      const finalName = name.trim() || user?.displayName || 'Anonymous';
+      await createFeedbackDocument(finalName, body.trim());
+      const data = await getFeedbackStream();
+      setMessages(data);
+      setBody('');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  useEffect(function subscribeToAuthState() {
+    const unsub = onAuthStateChanged(auth, (userAuth) => {
+      setUser(userAuth);
+    });
+    return unsub;
+  }, []);
+
+  useEffect(function loadInitialMessages() {
+    const loadMessages = async () => {
+      setIsLoading(true);
+      const data = await getFeedbackStream();
+      setMessages(data);
+      setIsLoading(false);
+    };
+
+    void loadMessages();
+  }, []);
+
+  return {
+    user,
+    messages,
+    name,
+    body,
+    isSubmitting,
+    isLoading,
+    setName,
+    setBody,
+    handleSignIn,
+    handleSubmit,
+  };
+}
+
+type SignInPromptProps = {
+  onSignIn: () => Promise<void>;
+};
+
+function SignInPrompt({ onSignIn }: SignInPromptProps) {
+  return (
+    <motion.div
+      key="signin"
+      variants={MOTION_VARIANTS.container}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      className={STYLES.signInWrapper}
+    >
+      <motion.button
+        type="button"
+        onClick={onSignIn}
+        className={STYLES.signInButton}
+        variants={MOTION_VARIANTS.button}
+      >
+        Sign in with Google to post a message
+      </motion.button>
+    </motion.div>
+  );
+}
+
+type MessageFormProps = {
+  name: string;
+  body: string;
+  isSubmitting: boolean;
+  onNameChange: (value: string) => void;
+  onBodyChange: (value: string) => void;
+  onSubmit: FormEventHandler<HTMLFormElement>;
+};
+
+function MessageForm({
+  name,
+  body,
+  isSubmitting,
+  onNameChange,
+  onBodyChange,
+  onSubmit,
+}: MessageFormProps) {
+  return (
+    <motion.form
+      key="form"
+      onSubmit={onSubmit}
+      className={STYLES.form}
+      variants={MOTION_VARIANTS.container}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+    >
+      <motion.label className={STYLES.label} variants={MOTION_VARIANTS.field}>
+        Name
+        <input
+          value={name}
+          onChange={(e) => onNameChange(e.target.value)}
+          placeholder="Your name"
+          className={STYLES.input}
+        />
+      </motion.label>
+
+      <motion.label className={STYLES.label} variants={MOTION_VARIANTS.field}>
+        Message
+        <textarea
+          value={body}
+          onChange={(e) => onBodyChange(e.target.value)}
+          className={STYLES.textarea}
+          placeholder="Let me know something!"
+        />
+      </motion.label>
+
+      <motion.button
+        type="submit"
+        className={STYLES.submit}
+        disabled={isSubmitting || !body.trim()}
+        variants={MOTION_VARIANTS.button}
+      >
+        {isSubmitting ? 'Posting…' : 'Post message'}
+      </motion.button>
+    </motion.form>
+  );
+}
+
+export function MessageBoardSection() {
+  const {
+    user,
+    messages,
+    name,
+    body,
+    isSubmitting,
+    isLoading,
+    setName,
+    setBody,
+    handleSignIn,
+    handleSubmit,
+  } = useMessageBoardState();
+
+  return (
+    <Section
+      id={SECTION_SELECTORS.MESSAGE_BOARD}
+      label="Message Board"
+      title="Leave a Note!"
+      kicker="Sign in with Google to post, and read notes from other visitors!"
+    >
+      <div className={STYLES.container}>
+        <AnimatePresence mode="wait">
+          {!user ? (
+            <SignInPrompt key="signin-block" onSignIn={handleSignIn} />
+          ) : (
+            <MessageForm
+              key="form-block"
+              name={name}
+              body={body}
+              isSubmitting={isSubmitting}
+              onNameChange={setName}
+              onBodyChange={setBody}
+              onSubmit={handleSubmit}
+            />
+          )}
+        </AnimatePresence>
+
+        <div className={STYLES.listWrapper}>
+          {(isLoading || messages.length === 0) && (
+            <p className={STYLES.emptyStateText}>
+              {isLoading ? 'Loading messages…' : 'No messages yet. Be the first.'}
+            </p>
+          )}
+
+          {!isLoading && messages.length > 0 && (
+            <ul className={STYLES.list}>
+              {messages.map((msg) => (
+                <li key={msg.id} className={STYLES.item}>
+                  <div className={STYLES.meta}>
+                    <span className={STYLES.name}>{msg.name || 'Anonymous'}</span>
+                    <span className={STYLES.date}>{formatFeedbackDate(msg.date)}</span>
+                  </div>
+                  <p>{msg.message}</p>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </div>
+    </Section>
+  );
+}

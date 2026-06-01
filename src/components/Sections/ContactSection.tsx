@@ -2,7 +2,7 @@ import { CONTACT_INFOS } from '../../assets/contacts';
 import { SECTION_SELECTORS } from '../../lib/sectionSelectors';
 import { Section } from './Section';
 
-const styles = {
+const STYLES = {
   list: 'space-y-5 w-full max-w-2xl md:max-w-5xl mx-auto',
   item:
     'relative flex items-center gap-4 md:gap-6 justify-between md:justify-center ' +
@@ -29,28 +29,28 @@ export function ContactSection() {
       title="Get in Touch"
       kicker="Questions, collaborations or just a say hi!"
     >
-      <ul className={styles.list}>
+      <ul className={STYLES.list}>
         {CONTACT_INFOS.map((method) => {
-          const opensInNewTab = method.link.startsWith('http');
+          const shouldOpenInNewTab = method.link.startsWith('http');
 
           return (
-            <li key={method.name} className={styles.item}>
+            <li key={method.name} className={STYLES.item}>
               <a
                 href={method.link}
-                className={styles.iconWrapper}
-                target={opensInNewTab ? '_blank' : undefined}
-                rel={opensInNewTab ? 'noreferrer' : undefined}
+                className={STYLES.iconWrapper}
+                target={shouldOpenInNewTab ? '_blank' : undefined}
+                rel={shouldOpenInNewTab ? 'noreferrer' : undefined}
               >
-                <img src={method.path} alt={method.name} className={styles.iconImg} />
+                <img src={method.path} alt={method.name} className={STYLES.iconImg} />
               </a>
-              <div className={styles.content}>
-                <div className={styles.title}>{method.name}</div>
-                <p className={styles.desc}>{method.description}</p>
+              <div className={STYLES.content}>
+                <div className={STYLES.title}>{method.name}</div>
+                <p className={STYLES.desc}>{method.description}</p>
                 <a
                   href={method.link}
-                  className={styles.link}
-                  target={opensInNewTab ? '_blank' : undefined}
-                  rel={opensInNewTab ? 'noreferrer' : undefined}
+                  className={STYLES.link}
+                  target={shouldOpenInNewTab ? '_blank' : undefined}
+                  rel={shouldOpenInNewTab ? 'noreferrer' : undefined}
                 >
                   {method.tag}
                 </a>

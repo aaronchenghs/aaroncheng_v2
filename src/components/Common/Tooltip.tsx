@@ -9,7 +9,7 @@ type TooltipProps = {
   contentClassName?: string;
 };
 
-const styles = {
+const STYLES = {
   root: 'group/tooltip relative inline-flex',
   trigger: 'inline-flex',
   content:
@@ -23,9 +23,9 @@ const styles = {
 
 export function Tooltip({ content, children, className, contentClassName }: TooltipProps) {
   return (
-    <span className={cn(styles.root, className)} title={content}>
-      <span className={styles.trigger}>{children}</span>
-      <span role="tooltip" className={cn(styles.content, contentClassName)}>
+    <span className={cn(STYLES.root, className)} title={content}>
+      <span className={STYLES.trigger}>{children}</span>
+      <span role="tooltip" className={cn(STYLES.content, contentClassName)}>
         {content}
       </span>
     </span>
