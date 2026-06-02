@@ -21,7 +21,7 @@ export function AboutSection() {
       label="About"
       title="Aaron Cheng"
       titleAs="h1"
-      kicker="Software Engineer: TS, React, Angular, .NET, Node.js, Python, AWS"
+      kicker="Software Engineer"
     >
       <div className={STYLES.wrapper}>
         <div className={STYLES.imageWrapper}>
@@ -30,19 +30,17 @@ export function AboutSection() {
 
         <div className={STYLES.text}>
           <p>
-            I'm Aaron Cheng, a Louisiana software engineer and LSU Computer Science graduate. I
-            build full-stack and front-end applications with a focus on maintainability,
-            performance, and clean user experiences.
+            I'm Aaron Cheng, a software engineer and LSU Computer Science graduate. I build
+            full-stack and front-end applications with a focus on maintainability, performance, and
+            clean user experiences.
           </p>
           <p className="mt-4">
-            I currently work as a Software Engineer at Applied Research Associates and enjoy
-            building products that move from concept to shipped software. This portfolio is my hub
-            for experience, certifications, and project work.
+            I currently work as a Software Engineer at Juno Health (DSS Inc.) working on EHR
+            applications. This portfolio is my hub for experience, certifications, and project work.
           </p>
           <p className="mt-4">
             Outside of work, I build side projects, stay active, play retro games, and spend time
-            with my pup Luna, and look for good people to build with. Here you'll find certs, apps,
-            and direct ways to reach me.
+            with my pup Luna. Here you'll find certs, apps, and direct ways to reach me.
           </p>
         </div>
 
